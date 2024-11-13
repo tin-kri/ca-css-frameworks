@@ -1,4 +1,65 @@
-<div
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Frameworks CA Tailwind</title>
+  </head>
+  <body class="bg-pink-300">
+    
+   <header class=" m md:text-lg md:font-bold">
+     <nav class="container mx-auto">
+
+      <div class="flex justify-start p-5">
+       
+      <div class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto " >
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Profile</a>
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Explore</a>
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Create</a>
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Log out</a>
+      </div>
+
+      <div class="flex md:hidden items-center">
+        <button class="" id="menu-button">
+          <svg
+            class="w-6 h-6  text-red-950 hover:text-red-800" 
+            fill="none"
+            stroke-linecap="square"
+            stroke-linejoin="square"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+     <div class="hidden  text-red-950 font-bold" id="mobile-nav" >
+      <ul class="p-5 pt-0">
+        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+          <a href="index.html">Profile</a>
+        </li>
+   <li class="mb-5 hover:text-red-800 focus:text-red-900">
+        <a href="index.html">Explore</a>
+      </li>
+   <li class="mb-5 hover:text-red-800 focus:text-red-900">
+        <a href="index.html">Create</a>
+      </li>
+   <li class="mb-5 hover:text-red-800 focus:text-red-900">
+        <a href="login.html">Log out</a>
+      </li>
+      </ul>
+     </div>
+     </nav>
+    </header>
+    
+    <div id="landing-page"></div>
+
+    <div
   class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
   id="card-container"
 >
@@ -92,3 +153,104 @@
     </div>
   </div>
 </div>
+  
+    <script type="module" src="js/main.js"></script>
+  </section>
+  </body>
+</html>
+
+
+<!-- <div
+  class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  id="card-container"
+>
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+
+  <div class="m-8 shadow-sm bg-white rounded-md p-10">
+    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
+      How your immune system changes during menstruation
+    </div>
+    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
+      Discover how your immune system fluctuates during your menstrual cycle and
+      learn how to support it through each phase.
+    </div>
+  </div>
+</div> -->
