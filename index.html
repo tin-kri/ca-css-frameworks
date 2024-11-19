@@ -59,25 +59,49 @@
     
     <div id="landing-page"></div>
 
+    
+    
+    
     <div class="container mx-auto p-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 ">
-        <!-- Left Side: Profile -->
-        <div class="profile-container  text-center font-bold text-xl text-red-950 flex flex-col items-center mb-10 lg:mr-10  lg:justify-end lg:items-end">
-          <img
-            class="rounded-full object-cover w-56 h-56 mb-5"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/440px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg"
-            alt="profile img woman with glasses"
-          />
-          <h2 class="">Whitney Houston</h2>
+      <div class="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-16">
+        <!-- Left Side: Profile Section -->
+        <div class="flex flex-col items-center text-center lg:items-center lg:text-center">
+          <!-- Profile Picture -->
+          <div class="profile-container font-bold text-xl text-red-950">
+            <img
+              class="rounded-full object-cover w-56 h-56 mb-4"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/440px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg"
+              alt="profile img woman with glasses"
+            />
+            <h2>Whitney Houston</h2>
+          </div>
+    
+          <!-- Buttons -->
+          <div class="flex space-x-4 mt-4">
+            <!-- Follow Button -->
+            <button class="flex sm:hidden items-center justify-center w-10 h-10 bg-red-900 text-white text-lg font-semibold rounded-full shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
+              +
+            </button>
+            <button class="hidden sm:flex px-6 py-3 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
+              Follow
+            </button>
+    
+            <!-- DM Button -->
+            <button class="flex sm:hidden items-center justify-center w-10 h-10 bg-pink-500 text-white text-lg font-semibold rounded-full shadow-mdhover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
+              ✉
+            </button>
+            <button class="hidden sm:flex px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
+              Message
+            </button>
+          </div>
         </div>
-  
+    
         <!-- Right Side: Followers and Following -->
-        <div class="followers-following-container flex flex-col items-center  gap-8 lg:ml-10 lg:justify-start lg:items-start">
+        <div class="flex flex-col items-center lg:items-center space-y-8 mt-8 lg:mt-0">
           <!-- Followers Section -->
-          <div class="followers-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-start gap-2 ">
+          <div class="followers-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-center gap-2">
             <h3>Followers</h3>
             <div class="flex gap-4 flex-wrap">
-              <!-- Add followers -->
               <img
                 class="rounded-lg object-cover w-14 h-14"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/440px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg"
@@ -90,12 +114,11 @@
               />
             </div>
           </div>
-  
+    
           <!-- Following Section -->
-          <div class="following-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-start gap-2">
+          <div class="following-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-center gap-2">
             <h3>Following</h3>
             <div class="flex gap-4 flex-wrap">
-              <!-- Add following -->
               <img
                 class="rounded-lg object-cover w-14 h-14"
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg/440px-Woman_at_Lover%27s_Bridge_Tanjung_Sepat_%28cropped%29.jpg"
@@ -110,6 +133,8 @@
           </div>
         </div>
       </div>
+    </div>
+    
   
       <!-- Divider -->
       <div class="py-11">
@@ -183,6 +208,7 @@
             
           <!-- Repeat posts -->
         </div>
+        
       </div>
     </div>
   
