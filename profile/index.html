@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,53 +8,68 @@
     <title>CSS Frameworks CA Tailwind</title>
   </head>
   <body class="bg-pink-300">
-    
-   <header class=" m md:text-lg md:font-bold">
-     <nav class="container mx-auto">
-
-      <div class="flex justify-start p-5">
-       
-      <div class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto " >
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Profile</a>
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Explore</a>
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Create</a>
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8" href="#">Log out</a>
-      </div>
-
-      <div class="flex md:hidden items-center">
-        <button class="" id="menu-button">
-          <svg
-            class="w-6 h-6  text-red-950 hover:text-red-800" 
-            fill="none"
-            stroke-linecap="square"
-            stroke-linejoin="square"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+    <header class="m md:text-lg md:font-bold">
+      <nav class="container mx-auto">
+        <div class="flex justify-start p-5">
+          <div
+            class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto"
           >
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+            <a
+              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+              href="/profile/index.html"
+              >Profile</a
+            >
+            <a
+              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+              href="/feed/index.html"
+              >Explore</a
+            >
+            <!-- <a
+              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+              href="#"
+              >Create</a
+            > -->
+            <a
+              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+              href="/index.html"
+              >Log out</a
+            >
+          </div>
 
-     <div class="hidden  text-red-950 font-bold" id="mobile-nav" >
-      <ul class="p-5 pt-0">
-        <li class="mb-5 hover:text-red-800 focus:text-red-900">
-          <a href="index.html">Profile</a>
-        </li>
-   <li class="mb-5 hover:text-red-800 focus:text-red-900">
-        <a href="feed.html">Explore</a>
-      </li>
-   <li class="mb-5 hover:text-red-800 focus:text-red-900">
-        <a href="index.html">Create</a>
-      </li>
-   <li class="mb-5 hover:text-red-800 focus:text-red-900">
-        <a href="login.html">Log out</a>
-      </li>
-      </ul>
-     </div>
-     </nav>
+          <div class="flex md:hidden items-center">
+            <button class="" id="menu-button">
+              <svg
+                class="w-6 h-6 text-red-950 hover:text-red-800"
+                fill="none"
+                stroke-linecap="square"
+                stroke-linejoin="square"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="hidden text-red-950 font-bold" id="mobile-nav">
+          <ul class="p-5 pt-0">
+            <li class="mb-5 hover:text-red-800 focus:text-red-900">
+              <a href="/profile/index.html">Profile</a>
+            </li>
+            <li class="mb-5 hover:text-red-800 focus:text-red-900">
+              <a href="/feed/index.html">Explore</a>
+            </li>
+            <!-- <li class="mb-5 hover:text-red-800 focus:text-red-900">
+              <a href="index.html">Create</a>
+            </li> -->
+            <li class="mb-5 hover:text-red-800 focus:text-red-900">
+              <a href="/index.html">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
     
     <div id="landing-page"></div>
@@ -64,9 +79,9 @@
     
     <div class="container mx-auto p-4">
       <div class="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-16">
-        <!-- Left Side: Profile Section -->
+      
         <div class="flex flex-col items-center text-center lg:items-center lg:text-center">
-          <!-- Profile Picture -->
+         
           <div class="profile-container font-bold text-xl text-red-950">
             <img
               class="rounded-full object-cover w-56 h-56 mb-4"
@@ -76,29 +91,38 @@
             <h2>Whitney Houston</h2>
           </div>
     
-          <!-- Buttons -->
+        
           <div class="flex space-x-4 mt-4">
-            <!-- Follow Button -->
-            <button class="flex sm:hidden items-center justify-center w-10 h-10 bg-red-900 text-white text-lg font-semibold rounded-full shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
+          
+            <a href="#" class="flex sm:hidden items-center justify-center w-10 h-10 bg-red-900 text-white text-lg font-semibold rounded-full shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
               +
-            </button>
-            <button class="hidden sm:flex px-6 py-3 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">
-              Follow
-            </button>
+            </a>
+
+            <a href="#" class="hidden sm:flex px-6 py-3 bg-red-900 text-white font-semibold rounded-lg shadow-md hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2">Follow</a>
     
-            <!-- DM Button -->
-            <button class="flex sm:hidden items-center justify-center w-10 h-10 bg-pink-500 text-white text-lg font-semibold rounded-full shadow-mdhover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
-              ✉
-            </button>
-            <button class="hidden sm:flex px-6 py-3 bg-pink-500 text-white font-semibold rounded-lg shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
+            
+            <a href="#" class="flex sm:hidden items-center justify-center w-10 h-10 bg-white text-white text-lg font-semibold rounded-full   hover:bg-neutral-100  focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="dots-three" >
+                <rect width="256" height="256" fill="none"></rect>
+               
+                <circle  cx="128" cy="128" r="16" fill="#831843"></circle>
+                <circle cx="64" cy="128" r="16" fill="#831843"></circle>
+                <circle cx="192" cy="128" r="16" fill="#831843"></circle>
+              </svg>
+              
+                
+              
+            </a>
+            <a href="#" class="hidden sm:flex px-6 py-3 bg-white text-red-950 font-semibold rounded-lg shadow-md hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-ring-pink-700 focus:ring-offset-2">
               Message
-            </button>
+            </a>
           </div>
         </div>
     
-        <!-- Right Side: Followers and Following -->
+     
         <div class="flex flex-col items-center lg:items-center space-y-8 mt-8 lg:mt-0">
-          <!-- Followers Section -->
+         
           <div class="followers-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-center gap-2">
             <h3>Followers</h3>
             <div class="flex gap-4 flex-wrap">
@@ -115,7 +139,7 @@
             </div>
           </div>
     
-          <!-- Following Section -->
+          
           <div class="following-container text-l font-semibold text-red-950 flex flex-col items-center lg:items-center gap-2">
             <h3>Following</h3>
             <div class="flex gap-4 flex-wrap">
@@ -136,12 +160,12 @@
     </div>
     
   
-      <!-- Divider -->
+      
       <div class="py-11">
         <div class="w-2/3 h-0.5 bg-red-900 m-auto rounded-lg" ></div>
       </div>
   
-      <!-- Posts Section -->
+   
       <div class="posts-section">
         <h3 class="text-l font-semibold text-red-950 flex justify-center">My posts</h3>
         <div class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-4">
@@ -206,13 +230,13 @@
               </div>  
             </div>
             
-          <!-- Repeat posts -->
+          
         </div>
         
       </div>
     </div>
   
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
   </section>
   </body>
 </html>
