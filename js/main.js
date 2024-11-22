@@ -1,4 +1,4 @@
-import "/style.css";
+import "../style.css";
 import { mobileNavigation } from "../js/mobileNav.js";
 
 mobileNavigation();
