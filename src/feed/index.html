@@ -1,82 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CSS Frameworks CA Tailwind</title>
+    <title>Article | Multipage Vite Vanilla JavaScript</title>
+    <link rel="stylesheet" href="../style.css"/>
   </head>
+  
   <body class="bg-pink-300">
-    <header class="m md:text-lg md:font-bold">
-      <nav class="container mx-auto">
-        <div class="flex justify-start p-5">
-          <div
-            class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto"
-          >
-            <a
-              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-              href="/profile/index.html"
-              >Profile</a
-            >
-            <a
-              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-              href="/feed/index.html"
-              >Explore</a
-            >
-            <!-- <a
-              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-              href="#"
-              >Create</a
-            > -->
-            <a
-              class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-              href="/index.html"
-              >Log out</a
-            >
-          </div>
 
-          <div class="flex md:hidden items-center">
-            <button class="" id="menu-button">
-              <svg
-                class="w-6 h-6 text-red-950 hover:text-red-800"
-                fill="none"
-                stroke-linecap="square"
-                stroke-linejoin="square"
-                stroke-width="2.5"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
+  
+   <!-- HEADER -->
+<header class="m md:text-lg md:font-bold">
+  <nav class="container mx-auto">
+    <div class="flex justify-start p-5">
+      <div
+        class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto">
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+          href="/profile/index.html"> Profile</a>
 
-        <div class="hidden text-red-950 font-bold" id="mobile-nav">
-          <ul class="p-5 pt-0">
-            <li class="mb-5 hover:text-red-800 focus:text-red-900">
-              <a href="/profile/index.html">Profile</a>
-            </li>
-            <li class="mb-5 hover:text-red-800 focus:text-red-900">
-              <a href="/feed/index.html">Explore</a>
-            </li>
-            <!-- <li class="mb-5 hover:text-red-800 focus:text-red-900">
-              <a href="index.html">Create</a>
-            </li> -->
-            <li class="mb-5 hover:text-red-800 focus:text-red-900">
-              <a href="index.html">Log out</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+          href="/feed/index.html"> Feed</a>
+        
+        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
+          href="/index.html">Sign in </a>
+      </div>
+
+      <div class="flex md:hidden items-center">
+        <button class="" id="menu-button">
+          <svg
+            class="w-6 h-6 text-red-950 hover:text-red-800"
+            fill="none"
+            stroke-linecap="square"
+            stroke-linejoin="square"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="hidden text-red-950 font-bold" id="mobile-nav">
+      <ul class="p-5 pt-0">
+        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+          <a href="/profile/index.html">Profile</a>
+        </li>
+        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+          <a href="/feed/index.html">Feed</a>
+        </li>
+        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+          <a href="/index.html">Sign in</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
     
-    <main>
+  <main>
     <div id="landing-page"></div>
 
 <section id="create-post">
@@ -306,8 +289,8 @@
 </div>
 </section>
 
-<script type="module" src="/js/main.js"></script>  
+<script type="module" src="../main.js"></script>  
 </main>
   </body>
-</html>
 
+</html>
