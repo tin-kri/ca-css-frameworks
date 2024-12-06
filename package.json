@@ -1,17 +1,29 @@
 {
-  "name": "multipage-vite-vanilla-js",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.15",
-    "vite": "^5.4.10"
-  }
+    "name": "multipage-vite-vanilla-js",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.20",
+        "postcss": "^8.4.49",
+        "prettier": "^3.3.3",
+        "prettier-plugin-tailwindcss": "^0.6.9",
+        "tailwindcss": "^3.4.15",
+        "vite": "^5.4.10"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true,
+        "plugins": [
+            "prettier-plugin-tailwindcss"
+        ]
+    }
 }
