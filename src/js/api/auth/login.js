@@ -1,4 +1,6 @@
 import { API_AUTH_LOGIN } from '../../constants.js'
+import { addToLocalStorage } from '../../utils.js'
+import { getFromLocalStorage } from '../../utils.js'
 
 export async function loginUser(userDetails) {
     try {
@@ -19,10 +21,11 @@ export async function loginUser(userDetails) {
     }
 }
 
-function addToLocalStorage(key, value) {
-    localStorage.setItem(key, value)
-}
+// function addToLocalStorage(key, value) {
+//     localStorage.setItem(key, value)
+// }
 
-function getFromLocalStorage(key) {
-    return localStorage.getItem(key)
-}
+// function getFromLocalStorage(key) {
+//     return localStorage.getItem(key)
+// }
+// moved to utils.js
