@@ -1,5 +1,5 @@
 import { API_AUTH_LOGIN } from '../../constants.js'
-import { addToLocalStorage } from '../../utils.js'
+import { addToLocalStorage } from '../../utils/storage.js'
 
 export async function loginUser(userDetails) {
     try {

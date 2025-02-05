@@ -2,7 +2,7 @@
 // Endpoint /social/posts
 
 import { API_SOCIAL_POSTS } from '../../constants'
-import { getFromLocalStorage } from '../../utils'
+import { getFromLocalStorage } from '../../utils/storage'
 
 // {
 //     "title": "string", // Required
@@ -37,8 +37,7 @@ export async function createPost(postData) {
         const json = await response.json()
 
         return json
-        
     } catch (error) {
-        console.log('error creating post')
+        console.log('error fetching post')
     }
 }

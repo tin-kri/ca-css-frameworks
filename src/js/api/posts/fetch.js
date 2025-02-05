@@ -1,6 +1,6 @@
-import { API_SOCIAL_POSTS } from "../../constants"
-import { getFromLocalStorage } from "../../utils"
-import { API_KEY } from "../../constants"
+import { API_SOCIAL_POSTS } from '../../constants'
+import { getFromLocalStorage } from '../../utils/storage'
+import { API_KEY } from '../../constants'
 
 export async function fetchPosts() {
     try {
@@ -15,7 +15,6 @@ export async function fetchPosts() {
         const response = await fetch(API_SOCIAL_POSTS, fetchOptions)
         const json = await response.json()
         return json.data
-      
     } catch (error) {
         console.log('fetch error:', error)
     }
