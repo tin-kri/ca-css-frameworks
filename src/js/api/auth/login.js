@@ -1,6 +1,5 @@
 import { API_AUTH_LOGIN } from '../../constants.js'
 import { addToLocalStorage } from '../../utils.js'
-import { getFromLocalStorage } from '../../utils.js'
 
 export async function loginUser(userDetails) {
     try {
@@ -16,16 +15,10 @@ export async function loginUser(userDetails) {
         const accessToken = json.data.accessToken
         addToLocalStorage('accessToken', accessToken)
         console.log(json)
+        if (response.ok) {
+            window.location.replace('/feed/index')
+        }
     } catch (error) {
         console.log('there is an error with logging in', error)
     }
 }
-
-// function addToLocalStorage(key, value) {
-//     localStorage.setItem(key, value)
-// }
-
-// function getFromLocalStorage(key) {
-//     return localStorage.getItem(key)
-// }
-// moved to utils.js

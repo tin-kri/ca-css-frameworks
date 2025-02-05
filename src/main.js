@@ -47,7 +47,7 @@ async function displayFeed() {
             if (posts) {
                 const postRenderer = new PostRenderer(cardContent)
                 postRenderer.render(posts)
-                console.log('Posts rendered successfully')
+                // console.log('Posts rendered successfully')
             }
         } catch (error) {
             console.error('Failed to initialize feed:', error)
@@ -57,3 +57,13 @@ async function displayFeed() {
 
 // Shows the feed
 displayFeed()
+
+
+
+const blogPostForm = document.getElementById('create-post-form')
+
+// getElementById('post-title')
+// getElementById('post-text')
+
+
+

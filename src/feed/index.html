@@ -89,7 +89,7 @@
         <main>
             <div id="landing-page"></div>
 
-            <section id="create-post">
+            <section id="create-post-section">
                 <div class="container mx-auto">
                     <h1
                         class="m-8 text-xl font-bold text-red-900 sm:text-left lg:text-center"
@@ -98,7 +98,8 @@
                     </h1>
                     <div
                         class="m-8 max-w-3xl rounded-md bg-white p-10 shadow-sm lg:mx-auto"
-                    >
+                    id="create-post-form"
+                        >
                         <form class="space-y-6">
                             <div>
                                 <label
@@ -108,7 +109,7 @@
                                 >
                                 <input
                                     type="text"
-                                    id="title"
+                                    id="post-title"
                                     name="title"
                                     required
                                     class="w-full rounded-md border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm"
@@ -117,7 +118,7 @@
                             </div>
                             <div>
                                 <label
-                                    for="text"
+                                    for="post-text"
                                     class="block text-sm font-medium text-gray-900"
                                     >Text</label
                                 >
@@ -215,6 +216,8 @@
                                 </div>
                             </template>
                         </div>
+                      
+                    
                             </div>
                         </div>
                     </div>
