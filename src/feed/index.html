@@ -197,129 +197,24 @@
                             </div>
                         </div>
 
-                        <div
-                            class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                            id="card-container"
-                        >
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Autumn's Whisper
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Leaves fall, crisp and dry, Whispers of
-                                    autumn linger, Chill bites through the air.
-                                </div>
+                        <div class="container mx-auto px-4">
+                            <div id="card-container" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-8">
+                                <!-- Posts will be rendered here directly -->
                             </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Secrets of the Sea
+                        </div>
+                        
+                            <!-- Template for posts (hidden) -->
+                            <template id="post-template">
+                                <div class="m-8 rounded-md bg-white p-10 shadow-sm post-container">
+                                    <div class="font-semibold text-red-900 sm:text-lg lg:text-xl post-title">
+                                        <!-- Title will be inserted here -->
+                                    </div>
+                                    <div class="text-red-900 sm:text-sm lg:mt-3 lg:text-base post-body">
+                                        <!-- Body will be inserted here -->
+                                    </div>
                                 </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Waves crash on the shore, Secrets hidden in
-                                    the foam, Tides reveal their tales.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Winter's Embrace
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Winter's icy breath, Laden clouds of silver
-                                    weight, Blankets earth in white.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Blossoms of Spring
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Cherry blossoms bloom, Petals drift in pink
-                                    cascades, Spring's delicate art.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Guardians of Stone
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Mountains stand steadfast, Guardians of time
-                                    and stone, Ancient and unbowed.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    The Last Bottle
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    “This is the last one,” she whispered,
-                                    tossing it into the recycling bin. It wasn't
-                                    just trash; it was transformation.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Great Bike Adventure
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    The birthday gift was a shiny blue bike. His
-                                    parents had one rule: stick to the path in
-                                    the park.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Kite
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Lila and her friends raced across the field,
-                                    the tail of her red kite fluttering in the
-                                    wind.
-                                </div>
-                            </div>
-                            <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                                <div
-                                    class="font-semibold text-red-900 sm:text-lg lg:text-xl"
-                                >
-                                    Ashes and Embers
-                                </div>
-                                <div
-                                    class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                                >
-                                    Flames dance in the night, Stories rise on
-                                    smoky winds, Stars hold silent watch.
-                                </div>
+                            </template>
+                        </div>
                             </div>
                         </div>
                     </div>

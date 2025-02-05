@@ -3,11 +3,13 @@ import './style.css'
 import { mobileNavigation } from './mobileNav'
 import { onRegisterFormSubmit } from './js/handlers.js'
 import { onLoginFormSubmit } from './js/handlers.js'
+import { fetchPosts } from './js/api/posts/fetch.js'
 
 import { API_SOCIAL_POSTS } from './js/constants.js'
 import { addToLocalStorage } from './js/utils.js'
 import { getFromLocalStorage } from './js/utils.js'
 import { API_KEY } from './js/constants.js'
+import { PostRenderer } from './js/posts/postsRenderer.js'
 
 mobileNavigation()
 
@@ -36,39 +38,22 @@ if (loginForm) {
     // console.error('Could not find form with ID "login-form"')
 }
 
-const displayFeed = document.getElementById('card-container')
-
-// fetch posts from api
-// use auth access token
-// display posts
-
-async function fetchPosts() {
-    try {
-        const accessToken = getFromLocalStorage('accessToken')
-        console.log(accessToken)
-        const fetchOptions = {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'X-Noroff-API-Key': API_KEY,
-            },
+async function displayFeed() {
+    const cardContent = document.getElementById('card-container')
+    if (cardContent) {
+        try {
+            // Use your existing fetchPosts function
+            const posts = await fetchPosts()
+            if (posts) {
+                const postRenderer = new PostRenderer(cardContent)
+                postRenderer.render(posts)
+                console.log('Posts rendered successfully')
+            }
+        } catch (error) {
+            console.error('Failed to initialize feed:', error)
         }
-        const response = await fetch(API_SOCIAL_POSTS, fetchOptions)
-        const json = await response.json()
-        return json.data
-      
-    } catch (error) {
-        console.log('fetch error:', error)
     }
 }
 
-function generatePosts(posts) {
-  
-}
-
-async function main() {
-    const posts = await fetchPosts()
-    generatePosts(posts)
-    console.log(posts)
-}
-
-main()
+// Shows the feed
+displayFeed()
