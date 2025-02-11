@@ -1,8 +1,6 @@
-// src/js/api/posts/create.js
-// Endpoint /social/posts
-
 import { API_SOCIAL_POSTS } from '../../constants'
 import { getFromLocalStorage } from '../../utils/storage'
+import { API_KEY } from '../../constants'
 
 // {
 //     "title": "string", // Required
@@ -14,14 +12,11 @@ import { getFromLocalStorage } from '../../utils/storage'
 //     } // Optional
 //   }
 
-const blogPostForm = document.getElementById('create-post-form')
-
-getElementById('post-title')
-getElementById('post-text')
 
 export async function createPost(postData) {
     try {
         const accessToken = getFromLocalStorage('accessToken')
+        console.log('post data:', JSON.stringify(postData))
 
         const fetchOptions = {
             method: 'POST',
@@ -36,8 +31,9 @@ export async function createPost(postData) {
         const response = await fetch(API_SOCIAL_POSTS, fetchOptions)
         const json = await response.json()
 
+
         return json
     } catch (error) {
-        console.log('error fetching post')
+        console.log('error creating post', error)
     }
 }

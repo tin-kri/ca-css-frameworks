@@ -1,15 +1,10 @@
-// ./src/main.js
 import './style.css'
 import { mobileNavigation } from './mobileNav'
 import { onRegisterFormSubmit } from './js/handlers.js'
 import { onLoginFormSubmit } from './js/handlers.js'
 import { fetchPosts } from './js/api/posts/fetch.js'
-
-import { API_SOCIAL_POSTS } from './js/constants.js'
-import { addToLocalStorage } from './js/utils/storage.js'
-import { getFromLocalStorage } from './js/utils/storage.js'
-import { API_KEY } from './js/constants.js'
 import { PostRenderer } from './js/posts/postsRenderer.js'
+import { setUpPostForm } from './js/ui/posts.js'
 
 mobileNavigation()
 
@@ -42,7 +37,6 @@ async function displayFeed() {
     const cardContent = document.getElementById('card-container')
     if (cardContent) {
         try {
-            // Using existing fetchPosts function
             const posts = await fetchPosts()
             if (posts) {
                 const postRenderer = new PostRenderer(cardContent)
@@ -55,10 +49,9 @@ async function displayFeed() {
     }
 }
 
-// Shows the feed
+// feed
 displayFeed()
 
-const blogPostForm = document.getElementById('create-post-form')
-
-// getElementById('post-title')
-// getElementById('post-text')
+document.addEventListener('DOMContentLoaded', () => {
+    setUpPostForm()
+})

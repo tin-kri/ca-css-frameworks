@@ -17,10 +17,6 @@ export class PostRenderer {
     }
     // read more later https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Safely_inserting_external_content_into_a_page
 
-    //     const div = document.createElement('div');
-    // div.textContent = "<script>alert('hacked')</script>"; // Should escape the script
-    // document.body.appendChild(div);
-
     sanitizeText(text) {
         const div = document.createElement('div')
         div.textContent = text
