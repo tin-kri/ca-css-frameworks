@@ -1,3 +1,4 @@
+// ./src/main.js
 import './style.css'
 import { mobileNavigation } from './mobileNav'
 import { onRegisterFormSubmit } from './js/handlers.js'
@@ -55,3 +56,6 @@ displayFeed()
 document.addEventListener('DOMContentLoaded', () => {
     setUpPostForm()
 })
+
+
+
