@@ -1,5 +1,5 @@
-import { registerUser } from './api/auth/register'
-import { loginUser } from './api/auth/login'
+import { registerUser } from './register'
+import { loginUser } from './login'
 
 export function onRegisterFormSubmit(event) {
     event.preventDefault()
