@@ -1,11 +1,11 @@
 // ./src/main.js
-import './style.css'
-import { mobileNavigation } from './mobileNav'
-import { onRegisterFormSubmit } from './js/handlers.js'
-import { onLoginFormSubmit } from './js/handlers.js'
-import { fetchPosts } from './js/api/posts/fetch.js'
-import { PostRenderer } from './js/posts/postsRenderer.js'
-import { setUpPostForm } from './js/ui/posts.js'
+import '../style.css'
+import { mobileNavigation } from './mobileNav.js'
+import { onRegisterFormSubmit } from './handlers.js'
+import { onLoginFormSubmit } from './handlers.js'
+import { fetchPosts } from './api/posts/fetch.js'
+import { PostRenderer } from './posts/postsRenderer.js'
+import { setUpPostForm } from './ui/posts.js'
 
 mobileNavigation()
 
