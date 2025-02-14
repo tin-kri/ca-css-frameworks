@@ -161,64 +161,64 @@
         </h2>
 
         <!-- Search and Filters -->
-        <div
-            class="mb-8 rounded-xl bg-white p-6 shadow-lg ring-1 ring-black/5 backdrop-blur-lg"
-        >
-            <div
-                class="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0"
-            >
-                <!-- Search -->
-                <div class="relative flex-1 lg:mr-4">
-                    <svg
-                        class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                        />
-                    </svg>
-                    <input
-                        type="search"
-                        id="search"
-                        placeholder="Search posts"
-                        class="w-full rounded-lg border-gray-200 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+        
+        <!-- Search and Filters -->
+<div class="mb-8 rounded-xl bg-white p-6 shadow-lg ring-1 ring-black/5 backdrop-blur-lg">
+    <div class="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
+        <!-- Search -->
+        <div class="relative flex-1 lg:mr-4">
+            <div class="relative flex w-full">
+                <svg
+                    class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
                     />
-                </div>
-
-                <!-- Filter Options -->
-                <div class="flex flex-wrap items-center gap-4">
-                    <select
-                        id="sort"
-                        class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
-                    >
-                        <option value="recent">Most Recent</option>
-                        <option value="popular">
-                            Most Popular
-                        </option>
-                        <option value="trending">Trending</option>
-                    </select>
-
-                    <select
-                        id="category"
-                        class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
-                    >
-                        <option value="">All Categories</option>
-                        <option value="discussion">
-                            Discussion
-                        </option>
-                        <option value="question">Question</option>
-                        <option value="announcement">
-                            Announcement
-                        </option>
-                    </select>
-                </div>
+                </svg>
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="Search posts"
+                    class="w-full rounded-l-lg border-gray-200 border-r-0 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+                />
+                <button
+                    id="search-button"
+                    class="inline-flex items-center rounded-r-lg bg-red-900 px-4 py-2 text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+                >
+                    Search
+                </button>
             </div>
         </div>
+
+        <!-- Filter Options -->
+        <div class="flex flex-wrap items-center gap-4">
+            <select
+                id="sort"
+                class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+            >
+                <option value="recent">Most Recent</option>
+                <option value="popular">Most Popular</option>
+                <option value="trending">Trending</option>
+            </select>
+
+            <select
+                id="category"
+                class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+            >
+                <option value="">All Categories</option>
+                <option value="discussion">Discussion</option>
+                <option value="question">Question</option>
+                <option value="announcement">Announcement</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 
                         <div class="container mx-auto px-4">
