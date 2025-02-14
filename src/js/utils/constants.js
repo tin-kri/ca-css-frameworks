@@ -16,4 +16,4 @@ export const API_SOCIAL_POSTS = `${API_SOCIAL}/posts`
 
 export const API_SOCIAL_PROFILES = `${API_SOCIAL}/profiles`
 
-export const API_SOCIAL_POSTS_DELETE = (postId) => `${API_SOCIAL_POSTS}/${postId}`
+export const API_SOCIAL_POSTS_SEARCH = `${API_SOCIAL_POSTS}/search`
