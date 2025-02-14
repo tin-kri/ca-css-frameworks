@@ -4,6 +4,7 @@ import { mobileNavigation } from './handlers/nav.js'
 import { setupAuthHandlers } from './handlers/auth/handlers.js'
 import { fetchPosts } from './api/posts/fetch.js'
 import { PostsUI } from './ui/posts.js'
+import { SearchHandler } from './handlers/posts/searchHandler.js'
 
 mobileNavigation()
 
@@ -34,5 +35,15 @@ async function initializePosts() {
     }
 }
 
-// Initialize posts when DOM is loaded
+
 document.addEventListener('DOMContentLoaded', initializePosts)
+
+function initializeSearch() {
+    const container = document.getElementById('card-container')
+    if (container) {
+        const postsUI = new PostsUI(container)
+        new SearchHandler(postsUI)
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializeSearch)
