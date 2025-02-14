@@ -1,6 +1,6 @@
-import { API_SOCIAL_POSTS } from '../../constants'
+import { API_SOCIAL_POSTS } from '../../utils/constants'
 import { getFromLocalStorage } from '../../utils/storage'
-import { API_KEY } from '../../constants'
+import { API_KEY } from '../../utils/constants'
 
 export async function fetchPosts() {
     try {

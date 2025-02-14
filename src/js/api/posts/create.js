@@ -1,6 +1,6 @@
-import { API_SOCIAL_POSTS } from '../../constants'
+import { API_SOCIAL_POSTS } from '../../utils/constants'
 import { getFromLocalStorage } from '../../utils/storage'
-import { API_KEY } from '../../constants'
+import { API_KEY } from '../../utils/constants'
 
 // {
 //     "title": "string", // Required
@@ -11,7 +11,6 @@ import { API_KEY } from '../../constants'
 //       "alt": "string"
 //     } // Optional
 //   }
-
 
 export async function createPost(postData) {
     try {
@@ -30,7 +29,6 @@ export async function createPost(postData) {
 
         const response = await fetch(API_SOCIAL_POSTS, fetchOptions)
         const json = await response.json()
-
 
         return json
     } catch (error) {

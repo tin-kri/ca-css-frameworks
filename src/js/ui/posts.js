@@ -1,27 +1,77 @@
+// Display & render posts
 import { createPost } from '../api/posts/create'
 
-export function setUpPostForm() {
-    const form = document.getElementById('create-post-form')
+export class PostsUI {
+    constructor(containerElement) {
+        this.container = containerElement
+        this.setupPostForm()
+    }
 
-    form.addEventListener('submit', async function (event) {
-        event.preventDefault()
+    // Post Creation
+    setupPostForm() {
+        const form = document.getElementById('create-post-form')
+        if (!form) return
 
-        const titleInput = document.getElementById('post-title')
-        const textInput = document.getElementById('text')
-        const title = titleInput.value.trim()
-        const text = textInput.value.trim()
-        const postData = {
-            title: title,
-            body: text,
-        }
-        // console.log('Sending Post Data:', postData)
-        const newPost = await createPost(postData)
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault()
 
-        if (newPost) {
-            // console.log('post created success:', newPost)
-            form.reset();
-        } else {
-            console.log('failed to create post')
-        }
-    })
+            const titleInput = document.getElementById('post-title')
+            const textInput = document.getElementById('text')
+            const title = titleInput.value.trim()
+            const text = textInput.value.trim()
+            
+            const postData = {
+                title: title,
+                body: text,
+            }
+
+            try {
+                const newPost = await createPost(postData)
+                if (newPost) {
+                    form.reset()
+                    // Optionally refresh posts display
+                    this.addNewPost(newPost)
+                }
+            } catch (error) {
+                console.log('Failed to create post:', error)
+            }
+        })
+    }
+
+    // Post Display
+    createPostElement({ title, body }) {
+        const template = document.getElementById('post-template')
+        const postClone = template.content.cloneNode(true)
+        const postContainer = postClone.querySelector('.post-container')
+        const titleDiv = postClone.querySelector('.post-title')
+        const bodyDiv = postClone.querySelector('.post-body')
+
+        titleDiv.textContent = this.sanitizeText(title)
+        bodyDiv.textContent = this.sanitizeText(body)
+
+        return postContainer
+    }
+
+    sanitizeText(text) {
+        const div = document.createElement('div')
+        div.textContent = text
+        return div.innerHTML
+    }
+
+    render(posts) {
+        this.container.innerHTML = ''
+        const fragment = document.createDocumentFragment()
+        posts.forEach((post) => {
+            const postElement = this.createPostElement(post)
+            fragment.appendChild(postElement)
+        })
+
+        this.container.appendChild(fragment)
+    }
+
+    // Helper method to add a single new post
+    addNewPost(post) {
+        const postElement = this.createPostElement(post)
+        this.container.insertBefore(postElement, this.container.firstChild)
+    }
 }

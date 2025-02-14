@@ -1,4 +1,4 @@
-import { API_AUTH_REGISTER } from '../../constants.js'
+import { API_AUTH_REGISTER } from '../../utils/constants.js'
 
 export async function registerUser(userDetails) {
     try {
@@ -11,7 +11,15 @@ export async function registerUser(userDetails) {
         }
 
         const response = await fetch(API_AUTH_REGISTER, fetchOptions)
+        const json = await response.json()
+
+        if (response.ok) {
+            return json.data
+        } else {
+            throw new Error(json.message || 'Failed to register')
+        }
     } catch (error) {
-        console.log('there is an error', error)
+        console.log('Registration error:', error)
+        throw error // Re-throw to handle in the form handler
     }
 }
