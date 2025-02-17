@@ -14,7 +14,7 @@ export async function searchPosts(query) {
             }
         }
 
-        const response = await fetch(`${API_SOCIAL_POSTS_SEARCH}?q=${encodeURIComponent(query)}`, fetchOptions)
+        const response = await fetch(`${API_SOCIAL_POSTS_SEARCH}?q=${(query)}`, fetchOptions)
         const json = await response.json()
 
         return json.data
