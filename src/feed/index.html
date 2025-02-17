@@ -116,6 +116,24 @@
                                     placeholder="Enter your post title"
                                 />
                             </div>
+
+                            <div>
+                                <label for="post-tag" class="block text-sm font-medium text-gray-900">
+                                    Category
+                                </label>
+                                <select
+                                    id="post-tag"
+                                    name="tag"
+                                    required
+                                    class="w-full rounded-md border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm"
+                                >
+                                    <option value="" disabled selected>Select a category</option>
+                                    <option value="Poetry">Poetry</option>
+                                    <option value="Book">Book</option>
+                                    <option value="Quote">Quote</option>
+                                </select>
+                            </div>
+
                             <div>
                                 <label
                                     for="post-text"
@@ -206,16 +224,18 @@
                 <option value="popular">Most Popular</option>
                 <option value="alphabetical">Alphabetically (A-Z)</option>
             </select>
-<!-- 
+
+
+            
             <select
                 id="category"
                 class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
             >
                 <option value="">All Categories</option>
-                <option value="discussion">Discussion</option>
-                <option value="question">Question</option>
-                <option value="announcement">Announcement</option>
-            </select> -->
+                <option value="Poetry">Poetry</option>
+                <option value="Book">Book</option>
+                <option value="Quote">Quote</option>
+            </select>
         </div>
     </div>
 </div>

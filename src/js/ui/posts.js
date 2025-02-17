@@ -17,12 +17,16 @@ export class PostsUI {
 
             const titleInput = document.getElementById('post-title')
             const textInput = document.getElementById('text')
+            const categorySelect = document.getElementById('post-tag') // Get category select
+
             const title = titleInput.value.trim()
             const text = textInput.value.trim()
-            
+            const selectedCategory = categorySelect.value // Get selected category
+
             const postData = {
                 title: title,
                 body: text,
+                tags: selectedCategory ? [selectedCategory] : [], // Add as array
             }
 
             try {
@@ -39,7 +43,7 @@ export class PostsUI {
     }
 
     // Post Display
-    createPostElement({ title, body }) {
+    createPostElement({ title, body, tags = [] }) {
         const template = document.getElementById('post-template')
         const postClone = template.content.cloneNode(true)
         const postContainer = postClone.querySelector('.post-container')
@@ -49,8 +53,23 @@ export class PostsUI {
         titleDiv.textContent = this.sanitizeText(title)
         bodyDiv.textContent = this.sanitizeText(body)
 
-        return postContainer
+        // Add tags display
+        if (tags && tags.length > 0) {
+            const tagsContainer = document.createElement('div')
+            tagsContainer.className = 'flex gap-2 mt-2'
+            
+            tags.forEach(tag => {
+                const tagElement = document.createElement('span')
+                tagElement.className = 'px-2 py-1 text-sm rounded-full bg-pink-50 text-red-900'
+                tagElement.textContent = this.sanitizeText(tag)
+                tagsContainer.appendChild(tagElement)
+            })
+
+        postContainer.appendChild(tagsContainer)
     }
+
+    return postContainer
+}
 
     sanitizeText(text) {
         const div = document.createElement('div')

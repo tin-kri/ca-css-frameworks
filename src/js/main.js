@@ -5,45 +5,54 @@ import { setupAuthHandlers } from './handlers/auth/handlers.js'
 import { fetchPosts } from './api/posts/fetch.js'
 import { PostsUI } from './ui/posts.js'
 import { SearchHandler } from './handlers/posts/searchHandler.js'
+import { FilterHandler } from './handlers/posts/filterHandler.js'
+import { SortHandler } from './handlers/posts/sortHandler.js'
 
 mobileNavigation()
 
 document.querySelector('#landing-page').innerHTML = `
-  <div >
-     <h1 class=" text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
+  <div>
+     <h1 class="text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
   </div>
 `
+
 // login and register
 if (document.querySelector('#login-form') || document.querySelector('#register-form')) {
     setupAuthHandlers()
 }
 
-
-// Posts setup
-async function initializePosts() {
+// Combined initialization function
+async function initializeApp() {
     const container = document.getElementById('card-container')
     if (!container) return
 
     try {
+        // Create single PostsUI instance
+        const postsUI = new PostsUI(container)
+
+        // Initialize all handlers with the same PostsUI instance
+        new SearchHandler(postsUI)
+        new FilterHandler(postsUI)
+        const sortHandler = new SortHandler(postsUI)
+
+        // Fetch and render initial posts
         const posts = await fetchPosts()
         if (posts) {
-            const postsUI = new PostsUI(container)
             postsUI.render(posts)
         }
+
+        // Apply initial sort
+        sortHandler.sortPosts('recent')
+
     } catch (error) {
-        console.error('Failed to initialize feed:', error)
+        console.error('Failed to initialize app:', error)
+        container.innerHTML = `
+            <div class="text-red-600 text-center py-4">
+                Failed to load posts. Please try again later.
+            </div>
+        `
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', initializePosts)
-
-function initializeSearch() {
-    const container = document.getElementById('card-container')
-    if (container) {
-        const postsUI = new PostsUI(container)
-        new SearchHandler(postsUI)
-    }
-}
-
-document.addEventListener('DOMContentLoaded', initializeSearch)
+// Single DOMContentLoaded listener
+document.addEventListener('DOMContentLoaded', initializeApp, { once: true })
