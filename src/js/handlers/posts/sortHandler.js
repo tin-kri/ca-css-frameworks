@@ -1,4 +1,3 @@
-// js/handlers/posts/sortHandler.js
 import { getSortedPosts } from '../../api/posts/sortPosts.js'
 
 export class SortHandler {

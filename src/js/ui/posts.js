@@ -1,4 +1,3 @@
-// Display & render posts
 import { createPost } from '../api/posts/create'
 
 export class PostsUI {

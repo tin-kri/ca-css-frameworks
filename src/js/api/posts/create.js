@@ -2,15 +2,6 @@ import { API_SOCIAL_POSTS } from '../../utils/constants'
 import { getFromLocalStorage } from '../../utils/storage'
 import { API_KEY } from '../../utils/constants'
 
-// {
-//     "title": "string", // Required
-//     "body": "string", // Optional
-//     "tags": ["string"], // Optional
-//     "media": {
-//       "url": "https://url.com/image.jpg",
-//       "alt": "string"
-//     } // Optional
-//   }
 
 export async function createPost(postData) {
     try {

@@ -36,8 +36,6 @@
 //     }
 // }
 
-// src/js/api/posts/fetchUserPosts.js
-// src/js/api/posts/fetchUserPosts.js
 import { API_SOCIAL_PROFILES, API_KEY } from '../../utils/constants.js'
 import { getFromLocalStorage } from '../../utils/storage.js'
 

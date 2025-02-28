@@ -1,5 +1,3 @@
-// src/js/ui/usersPostsFeed.js
-import { createPost } from '../api/posts/create.js'
 import { fetchUserPosts } from '../api/posts/fetchUserPosts.js'  // Add this import
 
 export class LoggedInUserPostsUI {
