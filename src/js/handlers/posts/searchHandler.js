@@ -1,4 +1,5 @@
 // js/handlers/posts/searchHandler.js
+// js/handlers/posts/searchHandler.js
 import { searchPosts } from '../../api/posts/search.js'
 
 export class SearchHandler {
@@ -15,6 +16,7 @@ export class SearchHandler {
             const searchTerm = searchInput?.value.trim()
             if (searchTerm) {
                 await this.performSearch(searchTerm)
+                this.clearSearchInput(searchInput)
             }
         })
 
@@ -23,28 +25,30 @@ export class SearchHandler {
                 const searchTerm = searchInput.value.trim()
                 if (searchTerm) {
                     await this.performSearch(searchTerm)
+                    this.clearSearchInput(searchInput)
                 }
             }
         })
     }
 
-    
+    clearSearchInput(searchInput) {
+        if (searchInput) {
+            searchInput.value = ''
+            // Optional: Remove focus from the input
+            searchInput.blur()
+        }
+    }
 
     async performSearch(searchTerm) {
         try {
-            // Show loading state
             this.showLoadingState()
-
-            // Perform search
             const searchResults = await searchPosts(searchTerm)
             
-            // Update UI with results
             if (searchResults && searchResults.length > 0) {
                 this.postsUI.render(searchResults)
             } else {
                 this.showNoResults()
             }
-
         } catch (error) {
             console.log('Search failed:', error)
             this.showError('Failed to search posts')

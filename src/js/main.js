@@ -7,6 +7,7 @@ import { PostsUI } from './ui/posts.js'
 import { SearchHandler } from './handlers/posts/searchHandler.js'
 import { FilterHandler } from './handlers/posts/filterHandler.js'
 import { SortHandler } from './handlers/posts/sortHandler.js'
+import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 
 mobileNavigation()
 
@@ -17,7 +18,10 @@ document.querySelector('#landing-page').innerHTML = `
 `
 
 // login and register
-if (document.querySelector('#login-form') || document.querySelector('#register-form')) {
+if (
+    document.querySelector('#login-form') ||
+    document.querySelector('#register-form')
+) {
     setupAuthHandlers()
 }
 
@@ -43,7 +47,6 @@ async function initializeApp() {
 
         // Apply initial sort
         sortHandler.sortPosts('recent')
-
     } catch (error) {
         console.error('Failed to initialize app:', error)
         container.innerHTML = `
@@ -52,6 +55,13 @@ async function initializeApp() {
             </div>
         `
     }
+}
+
+// Profile user posts
+
+const userPostsContainer = document.querySelector('.posts-section > div')
+if (userPostsContainer) {
+    const userPostsUI = new LoggedInUserPostsUI(userPostsContainer)
 }
 
 // Single DOMContentLoaded listener

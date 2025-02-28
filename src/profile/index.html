@@ -210,30 +210,61 @@
             </div>
 
             <section id="posts">
+                
+
+                <template id="logged-in-user-post-template">
+                    <!-- Add h-full to make card take full height of its container -->
+                    <div class=" ml-8 mr-8 rounded-md bg-white shadow-sm logged-in-user-post-container relative flex flex-col h-full">              
+                        <div class="flex-1 p-4 sm:p-6 md:p-8">
+                            <!-- Top row with options -->
+                            <div class="flex justify-end items-start mb-4">
+                                <!-- Options menu (horizontal dots) -->
+                                <button 
+                                    type="button" 
+                                    class="options-btn p-1 text-gray-400 hover:text-red-600 transition-colors"
+                                    aria-label="Post options"
+                                >
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                                </svg>
+                                </button>
+                                <!-- Dropdown menu (hidden by default) -->
+                                <div class="options-menu hidden absolute right-2 top-12 w-32 bg-white rounded-md shadow-lg border border-gray-100 z-10">
+                                    <button class="edit-post-btn w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-red-900">
+                                        Edit
+                                    </button>
+                                    <button class="delete-post-btn w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-red-900">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                
+                            <!-- Post title and body -->
+                            <div class="pb-2 font-semibold text-red-900 text-base sm:text-lg md:text-xl logged-in-user-post-title"></div>
+                            <div class="text-red-900 text-sm sm:text-base logged-in-user-post-body"></div>
+                        </div>
+                
+                        <!-- Comment button section (now will stick to bottom) -->
+                        <div class="mt-auto"> <!-- mt-auto pushes it to the bottom -->
+                            <button 
+                                type="button" 
+                                class="w-full flex items-center justify-center gap-1 text-gray-500 hover:text-red-600 transition-colors bg-pink-50 border-t border-pink-100 p-3 rounded-b-md text-sm"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                                <span>Comment</span>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+                
                 <div class="posts-section">
-                    <h2
-                        class="flex justify-center text-xl font-bold text-red-900"
-                    >
+                    <h2 class="flex justify-center text-xl font-bold text-red-900">
                         My posts
                     </h2>
-                    <div
-                        class="mt-4 grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                    >
+                    <div class="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         
-                        <div class="m-8 rounded-md bg-white p-10 shadow-sm">
-                            <div
-                                class="pb-3 font-semibold text-red-900 sm:text-lg lg:text-xl"
-                            >
-                                Work Blues
-                            </div>
-                            <div
-                                class="text-red-900 sm:text-sm lg:mt-3 lg:text-base"
-                            >
-                                Emails pile like snow, Meetings stretch the
-                                hours thin, Weekend dreams take flight.
-                            </div>
-                        </div>
-                    
                     </div>
                 </div>
             </section>

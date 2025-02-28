@@ -42,30 +42,36 @@ export class PostsUI {
         })
     }
 
-    // Post Display
-    createPostElement({ title, body, tags = [] }) {
-        const template = document.getElementById('post-template')
-        const postClone = template.content.cloneNode(true)
-        const postContainer = postClone.querySelector('.post-container')
-        const titleDiv = postClone.querySelector('.post-title')
-        const bodyDiv = postClone.querySelector('.post-body')
 
-        titleDiv.textContent = this.sanitizeText(title)
-        bodyDiv.textContent = this.sanitizeText(body)
+  // Post Display
+createPostElement({ title, body, tags = [] }) {
+    const template = document.getElementById('post-template')
+    const postClone = template.content.cloneNode(true)
+    const postContainer = postClone.querySelector('.post-container')
+    const titleDiv = postClone.querySelector('.post-title')
+    const bodyDiv = postClone.querySelector('.post-body')
+    const tagsContainer = postClone.querySelector('.tags-container')
 
-        // Add tags display
-        if (tags && tags.length > 0) {
-            const tagsContainer = document.createElement('div')
-            tagsContainer.className = 'flex gap-2 mt-2'
-            
-            tags.forEach(tag => {
-                const tagElement = document.createElement('span')
-                tagElement.className = 'px-2 py-1 text-sm rounded-full bg-pink-50 text-red-900'
-                tagElement.textContent = this.sanitizeText(tag)
-                tagsContainer.appendChild(tagElement)
-            })
+    titleDiv.textContent = this.sanitizeText(title)
+    bodyDiv.textContent = this.sanitizeText(body)
 
-        postContainer.appendChild(tagsContainer)
+    // Add tags display
+    if (tags && tags.length > 0) {
+        const tagsWrapper = document.createElement('div')
+        tagsWrapper.className = 'flex flex-wrap gap-2'
+        
+        tags.forEach(tag => {
+            const tagElement = document.createElement('span')
+            tagElement.className = 'px-2 py-1 text-xs font-medium rounded-full bg-pink-50 text-red-900'
+            tagElement.textContent = this.sanitizeText(tag)
+            tagsWrapper.appendChild(tagElement)
+        })
+
+        // Append tags to the designated container
+        tagsContainer.appendChild(tagsWrapper)
+    } else {
+        // If no tags, remove the tags container to avoid empty space
+        tagsContainer.remove()
     }
 
     return postContainer
