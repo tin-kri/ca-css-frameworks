@@ -1,5 +1,8 @@
 import { fetchUserPosts } from '../api/posts/fetchUserPosts.js'
 import { deletePost } from '../api/posts/deletePost.js'
+import { showNotification } from '../utils/notifications.js'
+import { handlePostUpdate } from '../handlers/posts/updateHandler.js'
+import { createEditForm } from './postEditForm.js'
 
 
 export class LoggedInUserPostsUI {
@@ -7,6 +10,48 @@ export class LoggedInUserPostsUI {
         this.container = containerElement
         this.loadUserPosts()
     }
+
+
+    async handleEdit(id, currentData) {
+        const postElement = this.container.querySelector(`[data-post-id="${id}"]`)
+        if (!postElement) return
+
+        const contentDiv = postElement.querySelector('.flex-1')
+        if (!contentDiv) return
+
+        const originalContent = contentDiv.innerHTML
+
+        const handleSubmit = async (e) => {
+            e.preventDefault()
+            const formData = new FormData(e.target)
+            const updateData = {
+                title: formData.get('title'),
+                body: formData.get('body')
+            }
+
+            try {
+                const updatedPost = await handlePostUpdate(id, updateData)
+                if (updatedPost) {
+                    // Instead of trying to update individual elements,
+                    // reload all posts to ensure everything is in sync
+                    await this.loadUserPosts()
+                }
+            } catch (error) {
+                console.error('UI handler error:', error)
+                // Restore original content in case of error
+                contentDiv.innerHTML = originalContent
+            }
+        }
+
+        const handleCancel = () => {
+            contentDiv.innerHTML = originalContent
+        }
+
+        const form = createEditForm(currentData, handleSubmit, handleCancel)
+        contentDiv.innerHTML = ''
+        contentDiv.appendChild(form)
+    }
+
 
     async handleDelete(postId) {
         const postElement = this.container.querySelector(`[data-post-id="${postId}"]`)
@@ -18,15 +63,7 @@ export class LoggedInUserPostsUI {
 
         try {
             await deletePost(postId)
-            
-            // Simply remove the element
             postElement.remove()
-            
-            // Check if we need to show empty state
-            if (this.container.children.length === 0) {
-                this.render([])
-            }
-
             showNotification('Post deleted successfully', 'success')
         } catch (error) {
             console.error('Failed to delete post:', error)
