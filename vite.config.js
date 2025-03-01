@@ -33,9 +33,10 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'src/index.html'),
                 feed: resolve(__dirname, 'src/feed/index.html'),
-                profile: resolve(__dirname, 'src/profile/index.html')
-            }
-        }
+                post: resolve(__dirname, 'src/post/index.html'),
+                profile: resolve(__dirname, 'src/profile/index.html'),
+            },
+        },
     },
     server: {
         open: true,
@@ -43,10 +44,10 @@ export default defineConfig({
         middlewares: [
             (req, res, next) => {
                 if (req.url.endsWith('.js')) {
-                    res.setHeader('Content-Type', 'application/javascript');
+                    res.setHeader('Content-Type', 'application/javascript')
                 }
-                next();
-            }
-        ]
-    }
+                next()
+            },
+        ],
+    },
 })
