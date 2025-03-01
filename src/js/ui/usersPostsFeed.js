@@ -32,13 +32,10 @@ export class LoggedInUserPostsUI {
             try {
                 const updatedPost = await handlePostUpdate(id, updateData)
                 if (updatedPost) {
-                    // Instead of trying to update individual elements,
-                    // reload all posts to ensure everything is in sync
                     await this.loadUserPosts()
                 }
             } catch (error) {
                 console.error('UI handler error:', error)
-                // Restore original content in case of error
                 contentDiv.innerHTML = originalContent
             }
         }
