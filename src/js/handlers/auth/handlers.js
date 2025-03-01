@@ -24,13 +24,16 @@ export function setupAuthHandlers() {
     const loginForm = document.querySelector('#login-form')
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault()
+            event.preventDefault() // Prevent form submission
+            console.log('Login form submitted'); // Debug log
+            
             try {
                 const formData = new FormData(event.target)
                 const formFields = Object.fromEntries(formData)
                 await loginUser(formFields)
                 // Redirect is handled in loginUser
             } catch (error) {
+                console.error('Login failed:', error)
                 alert('Login failed: ' + error.message)
             }
         })
