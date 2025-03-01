@@ -1,10 +1,39 @@
-import { fetchUserPosts } from '../api/posts/fetchUserPosts.js'  // Add this import
+import { fetchUserPosts } from '../api/posts/fetchUserPosts.js'
+import { deletePost } from '../api/posts/deletePost.js'
+
 
 export class LoggedInUserPostsUI {
     constructor(containerElement) {
         this.container = containerElement
         this.loadUserPosts()
     }
+
+    async handleDelete(postId) {
+        const postElement = this.container.querySelector(`[data-post-id="${postId}"]`)
+        if (!postElement) return
+
+        if (!confirm('Are you sure you want to delete this post?')) {
+            return
+        }
+
+        try {
+            await deletePost(postId)
+            
+            // Simply remove the element
+            postElement.remove()
+            
+            // Check if we need to show empty state
+            if (this.container.children.length === 0) {
+                this.render([])
+            }
+
+            showNotification('Post deleted successfully', 'success')
+        } catch (error) {
+            console.error('Failed to delete post:', error)
+            showNotification('Failed to delete post. Please try again.', 'error')
+        }
+    }
+
 
     async loadUserPosts() {
         try {
@@ -62,7 +91,9 @@ export class LoggedInUserPostsUI {
             this.handleEdit(id, { title, body })
         })
     
-        deleteBtn?.addEventListener('click', () => {
+        deleteBtn?.addEventListener('click', (e) => {
+            e.stopPropagation()
+            // e.preventDefault()
             optionsMenu.classList.add('hidden')
             this.handleDelete(id)
         })
