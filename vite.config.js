@@ -21,13 +21,13 @@
 // vite.config.js
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-
+//changing  outDir: '../dist' to dist, 
 export default defineConfig({
     root: 'src', // Set root to src directory
     base: '/', // Set base URL
     publicDir: '../public',
     build: {
-        outDir: '../dist',
+        outDir: 'dist',
         emptyOutDir: true,
         rollupOptions: {
             input: {
