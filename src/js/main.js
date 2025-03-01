@@ -5,7 +5,6 @@ import { fetchPosts } from './api/posts/fetch.js'
 import { PostsUI } from './ui/posts.js'
 import { SearchHandler } from './handlers/posts/searchHandler.js'
 import { FilterHandler } from './handlers/posts/filterHandler.js'
-import { SortHandler } from './handlers/posts/sortHandler.js'
 import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 
 mobileNavigation()
@@ -36,7 +35,6 @@ async function initializeApp() {
         // Initialize all handlers with the same PostsUI instance
         new SearchHandler(postsUI)
         new FilterHandler(postsUI)
-        const sortHandler = new SortHandler(postsUI)
 
         // Fetch and render initial posts
         const posts = await fetchPosts()
@@ -44,8 +42,6 @@ async function initializeApp() {
             postsUI.render(posts)
         }
 
-        // Apply initial sort
-        sortHandler.sortPosts('recent')
     } catch (error) {
         console.error('Failed to initialize app:', error)
         container.innerHTML = `

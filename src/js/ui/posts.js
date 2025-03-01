@@ -1,4 +1,5 @@
 import { createPost } from '../api/posts/create'
+import { fetchPosts } from '../api/posts/fetch'
 
 export class PostsUI {
     constructor(containerElement) {
@@ -6,7 +7,6 @@ export class PostsUI {
         this.setupPostForm()
     }
 
-    // Post Creation
     setupPostForm() {
         const form = document.getElementById('create-post-form')
         if (!form) return
@@ -16,27 +16,30 @@ export class PostsUI {
 
             const titleInput = document.getElementById('post-title')
             const textInput = document.getElementById('text')
-            const categorySelect = document.getElementById('post-tag') // Get category select
+            const categorySelect = document.getElementById('post-tag')
 
             const title = titleInput.value.trim()
             const text = textInput.value.trim()
-            const selectedCategory = categorySelect.value // Get selected category
+            const selectedCategory = categorySelect.value
 
             const postData = {
                 title: title,
                 body: text,
-                tags: selectedCategory ? [selectedCategory] : [], // Add as array
+                tags: selectedCategory ? [selectedCategory] : [],
             }
 
             try {
                 const newPost = await createPost(postData)
                 if (newPost) {
                     form.reset()
-                    // Optionally refresh posts display
-                    this.addNewPost(newPost)
+                    // Fetch all posts again to ensure we have the latest data
+                    const updatedPosts = await fetchPosts()
+                    if (updatedPosts) {
+                        this.render(updatedPosts)
+                    }
                 }
             } catch (error) {
-                console.log('Failed to create post:', error)
+                console.error('Failed to create post:', error)
             }
         })
     }

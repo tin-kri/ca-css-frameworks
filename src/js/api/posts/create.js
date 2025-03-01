@@ -1,13 +1,12 @@
 import { API_SOCIAL_POSTS } from '../../utils/constants'
 import { getFromLocalStorage } from '../../utils/storage'
 import { API_KEY } from '../../utils/constants'
-
+import { showNotification } from '../../utils/notifications.js'
 
 export async function createPost(postData) {
     try {
         const accessToken = getFromLocalStorage('accessToken')
-        console.log('post data:', JSON.stringify(postData))
-
+        
         const fetchOptions = {
             method: 'POST',
             headers: {
@@ -19,10 +18,17 @@ export async function createPost(postData) {
         }
 
         const response = await fetch(API_SOCIAL_POSTS, fetchOptions)
-        const json = await response.json()
+        
+        if (!response.ok) {
+            throw new Error('Failed to create post')
+        }
 
+        const json = await response.json()
+        showNotification('Post created successfully', 'success')
         return json
     } catch (error) {
-        console.log('error creating post', error)
+        console.error('Error creating post:', error)
+        showNotification('Failed to create post', 'error')
+        throw error
     }
 }
