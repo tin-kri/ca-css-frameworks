@@ -81,13 +81,15 @@ import { FilterHandler } from './handlers/posts/filterHandler.js'
 import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 import { SinglePostUI } from './ui/singlePosts.js'
 
-mobileNavigation()
+
 
 document.querySelector('#landing-page').innerHTML = `
   <div>
      <h1 class="text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
   </div>
 `
+
+mobileNavigation()
 
 // login and register
 if (
