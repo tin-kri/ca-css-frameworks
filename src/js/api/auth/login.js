@@ -13,11 +13,18 @@ export async function loginUser(userDetails) {
         const response = await fetch(API_AUTH_LOGIN, fetchOptions)
         const json = await response.json()
         
-        if (response.ok) {
-            const accessToken = json.data.accessToken
-            addToLocalStorage('accessToken', accessToken)
-            window.location.replace('/feed/index')
-            return json.data
+       // src/js/api/auth/login.js
+if (response.ok) {
+    const accessToken = json.data.accessToken
+    addToLocalStorage('accessToken', accessToken)
+    
+    // Add debug logging
+    console.log('Login successful, token stored:', !!accessToken)
+    
+    // Update the redirect path
+    window.location.href = '/feed/'  // or '/feed/index.html'
+    return json.data
+
         } else {
             throw new Error(json.message || 'Failed to login')
         }

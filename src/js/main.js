@@ -101,6 +101,17 @@ if (
 
 // Initialize different pages based on their containers
 async function initializeApp() {
+
+    const token = localStorage.getItem('accessToken')
+    console.log('Current path:', window.location.pathname)
+    console.log('Token exists:', !!token)
+    
+    if (!token && (window.location.pathname.includes('/feed/') || 
+                   window.location.pathname.includes('/profile/'))) {
+        console.log('No token found, redirecting to login')
+        window.location.href = '/'
+        return
+    }
     // Feed page initialization
     const feedContainer = document.getElementById('card-container')
     if (feedContainer) {
