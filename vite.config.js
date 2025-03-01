@@ -33,7 +33,8 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'src/index.html'),
                 feed: resolve(__dirname, 'src/feed/index.html'),
-                profile: resolve(__dirname, 'src/profile/index.html')
+                profile: resolve(__dirname, 'src/profile/index.html'),
+                post: resolve(__dirname, 'src/post/index.html')
             }
         }
     },
