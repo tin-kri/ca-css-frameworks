@@ -82,6 +82,8 @@ import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 import { SinglePostUI } from './ui/singlePosts.js'
 
 
+console.log('Main.js loaded'); // Debug: Script loaded
+
 
 document.querySelector('#landing-page').innerHTML = `
   <div>
@@ -91,61 +93,171 @@ document.querySelector('#landing-page').innerHTML = `
 
 mobileNavigation()
 
-// login and register
-if (
-    document.querySelector('#login-form') ||
-    document.querySelector('#register-form')
-) {
-    setupAuthHandlers()
+function setupAuth() {
+    console.log('Checking for auth forms...'); // Debug
+    const loginForm = document.querySelector('#login-form');
+    const registerForm = document.querySelector('#register-form');
+    
+    console.log('Forms found:', { 
+        login: !!loginForm, 
+        register: !!registerForm 
+    }); // Debug
+    
+    if (loginForm || registerForm) {
+        console.log('Setting up auth handlers...'); // Debug
+        setupAuthHandlers();
+    }
+}
+
+// Initialize landing page
+function initializeLandingPage() {
+    const landingPage = document.querySelector('#landing-page');
+    if (landingPage) {
+        landingPage.innerHTML = `
+            <div>
+                <h1 class="text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
+            </div>
+        `;
+    }
+}
+
+// Check authentication
+function checkAuth() {
+    const token = localStorage.getItem('accessToken');
+    const currentPath = window.location.pathname;
+    console.log('Auth check:', { 
+        path: currentPath, 
+        hasToken: !!token 
+    }); // Debug
+
+    if (!token && (currentPath.includes('/feed/') || currentPath.includes('/profile/'))) {
+        console.log('No token found, redirecting to login'); // Debug
+        window.location.href = '/';
+        return false;
+    }
+    return true;
 }
 
 // Initialize different pages based on their containers
 async function initializeApp() {
+    console.log('Initializing app...'); // Debug
 
-    const token = localStorage.getItem('accessToken')
-    console.log('Current path:', window.location.pathname)
-    console.log('Token exists:', !!token)
+    // Check auth first
+    if (!checkAuth()) return;
+
+    // Initialize navigation
+    mobileNavigation();
     
-    if (!token && (window.location.pathname.includes('/feed/') || 
-                   window.location.pathname.includes('/profile/'))) {
-        console.log('No token found, redirecting to login')
-        window.location.href = '/'
-        return
-    }
+    // Initialize landing page
+    initializeLandingPage();
+    
+    // Setup auth handlers
+    setupAuth();
+
     // Feed page initialization
-    const feedContainer = document.getElementById('card-container')
+    const feedContainer = document.getElementById('card-container');
     if (feedContainer) {
+        console.log('Initializing feed page...'); // Debug
         try {
-            const postsUI = new PostsUI(feedContainer)
-            new SearchHandler(postsUI)
-            new FilterHandler(postsUI)
-            const posts = await fetchPosts()
+            const postsUI = new PostsUI(feedContainer);
+            new SearchHandler(postsUI);
+            new FilterHandler(postsUI);
+            const posts = await fetchPosts();
             if (posts) {
-                postsUI.render(posts)
+                postsUI.render(posts);
+                console.log('Feed posts rendered successfully'); // Debug
             }
         } catch (error) {
-            console.error('Failed to initialize feed:', error)
+            console.error('Failed to initialize feed:', error);
             feedContainer.innerHTML = `
                 <div class="text-red-600 text-center py-4">
                     Failed to load posts. Please try again later.
                 </div>
-            `
+            `;
         }
     }
 
     // Single post page initialization
-    const singlePostContainer = document.getElementById('post-container')
+    const singlePostContainer = document.getElementById('post-container');
     if (singlePostContainer) {
-        console.log('Initializing single post view')
-        new SinglePostUI(singlePostContainer)
+        console.log('Initializing single post view'); // Debug
+        new SinglePostUI(singlePostContainer);
     }
 
     // Profile user posts initialization
-    const userPostsContainer = document.querySelector('.posts-section > div')
-    if (userPostsContainer && !singlePostContainer) { // Only initialize if we're not on single post page
-        const userPostsUI = new LoggedInUserPostsUI(userPostsContainer)
+    const userPostsContainer = document.querySelector('.posts-section > div');
+    if (userPostsContainer && !singlePostContainer) {
+        console.log('Initializing user posts page'); // Debug
+        new LoggedInUserPostsUI(userPostsContainer);
     }
 }
 
-// Single DOMContentLoaded listener
-document.addEventListener('DOMContentLoaded', initializeApp, { once: true })
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded'); // Debug
+    initializeApp();
+}, { once: true });
+
+// Add error handling for script loading
+window.addEventListener('error', (event) => {
+    console.error('Script error:', event.error);
+});
+
+// login and register
+// if (
+//     document.querySelector('#login-form') ||
+//     document.querySelector('#register-form')
+// ) {
+//     setupAuthHandlers()
+// }
+
+// // Initialize different pages based on their containers
+// async function initializeApp() {
+
+//     const token = localStorage.getItem('accessToken')
+//     console.log('Current path:', window.location.pathname)
+//     console.log('Token exists:', !!token)
+    
+//     if (!token && (window.location.pathname.includes('/feed/') || 
+//                    window.location.pathname.includes('/profile/'))) {
+//         console.log('No token found, redirecting to login')
+//         window.location.href = '/'
+//         return
+//     }
+//     // Feed page initialization
+//     const feedContainer = document.getElementById('card-container')
+//     if (feedContainer) {
+//         try {
+//             const postsUI = new PostsUI(feedContainer)
+//             new SearchHandler(postsUI)
+//             new FilterHandler(postsUI)
+//             const posts = await fetchPosts()
+//             if (posts) {
+//                 postsUI.render(posts)
+//             }
+//         } catch (error) {
+//             console.error('Failed to initialize feed:', error)
+//             feedContainer.innerHTML = `
+//                 <div class="text-red-600 text-center py-4">
+//                     Failed to load posts. Please try again later.
+//                 </div>
+//             `
+//         }
+//     }
+
+//     // Single post page initialization
+//     const singlePostContainer = document.getElementById('post-container')
+//     if (singlePostContainer) {
+//         console.log('Initializing single post view')
+//         new SinglePostUI(singlePostContainer)
+//     }
+
+//     // Profile user posts initialization
+//     const userPostsContainer = document.querySelector('.posts-section > div')
+//     if (userPostsContainer && !singlePostContainer) { // Only initialize if we're not on single post page
+//         const userPostsUI = new LoggedInUserPostsUI(userPostsContainer)
+//     }
+// }
+
+// // Single DOMContentLoaded listener
+// document.addEventListener('DOMContentLoaded', initializeApp, { once: true })
