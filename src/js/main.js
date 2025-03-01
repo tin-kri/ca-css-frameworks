@@ -82,7 +82,6 @@ import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 import { SinglePostUI } from './ui/singlePosts.js'
 
 
-console.log('Main.js loaded'); // Debug: Script loaded
 
 
 document.querySelector('#landing-page').innerHTML = `
@@ -93,6 +92,21 @@ document.querySelector('#landing-page').innerHTML = `
 
 mobileNavigation()
 
+console.log('Main.js loaded'); // Debug: Script loaded
+
+// Initialize landing page content
+function initializeLandingPage() {
+    const landingPage = document.querySelector('#landing-page');
+    if (landingPage) {
+        landingPage.innerHTML = `
+            <div>
+                <h1 class="text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
+            </div>
+        `;
+    }
+}
+
+// Separate auth setup
 function setupAuth() {
     console.log('Checking for auth forms...'); // Debug
     const loginForm = document.querySelector('#login-form');
@@ -106,22 +120,20 @@ function setupAuth() {
     if (loginForm || registerForm) {
         console.log('Setting up auth handlers...'); // Debug
         setupAuthHandlers();
+        
+        // Add test handler for login form
+        if (loginForm) {
+            console.log('Adding test handler to login form'); // Debug
+            loginForm.addEventListener('submit', (e) => {
+                console.log('Test handler: Login form submitted');
+                e.preventDefault();
+                console.log('Form data:', new FormData(e.target));
+            }, true); // Use capture phase
+        }
     }
 }
 
-// Initialize landing page
-function initializeLandingPage() {
-    const landingPage = document.querySelector('#landing-page');
-    if (landingPage) {
-        landingPage.innerHTML = `
-            <div>
-                <h1 class="text-red-950 text-center p-10 text-5xl font-bold tracking-wider">Mizioù</h1>
-            </div>
-        `;
-    }
-}
-
-// Check authentication
+// Check authentication for protected routes
 function checkAuth() {
     const token = localStorage.getItem('accessToken');
     const currentPath = window.location.pathname;
@@ -138,22 +150,8 @@ function checkAuth() {
     return true;
 }
 
-// Initialize different pages based on their containers
-async function initializeApp() {
-    console.log('Initializing app...'); // Debug
-
-    // Check auth first
-    if (!checkAuth()) return;
-
-    // Initialize navigation
-    mobileNavigation();
-    
-    // Initialize landing page
-    initializeLandingPage();
-    
-    // Setup auth handlers
-    setupAuth();
-
+// Initialize protected features
+async function initializeProtectedFeatures() {
     // Feed page initialization
     const feedContainer = document.getElementById('card-container');
     if (feedContainer) {
@@ -192,72 +190,37 @@ async function initializeApp() {
     }
 }
 
-// Wait for DOM to be ready
+// Main initialization function
+async function initializeApp() {
+    console.log('Initializing app...'); // Debug
+
+    // Initialize basic UI first
+    initializeLandingPage();
+    mobileNavigation();
+    
+    // Setup auth handlers before checking auth
+    setupAuth();
+
+    // Check auth and initialize protected features
+    if (checkAuth()) {
+        await initializeProtectedFeatures();
+    }
+}
+
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded'); // Debug
-    initializeApp();
+    initializeApp().catch(error => {
+        console.error('App initialization failed:', error);
+    });
 }, { once: true });
 
-// Add error handling for script loading
+// Global error handling
 window.addEventListener('error', (event) => {
     console.error('Script error:', event.error);
 });
 
-// login and register
-// if (
-//     document.querySelector('#login-form') ||
-//     document.querySelector('#register-form')
-// ) {
-//     setupAuthHandlers()
-// }
-
-// // Initialize different pages based on their containers
-// async function initializeApp() {
-
-//     const token = localStorage.getItem('accessToken')
-//     console.log('Current path:', window.location.pathname)
-//     console.log('Token exists:', !!token)
-    
-//     if (!token && (window.location.pathname.includes('/feed/') || 
-//                    window.location.pathname.includes('/profile/'))) {
-//         console.log('No token found, redirecting to login')
-//         window.location.href = '/'
-//         return
-//     }
-//     // Feed page initialization
-//     const feedContainer = document.getElementById('card-container')
-//     if (feedContainer) {
-//         try {
-//             const postsUI = new PostsUI(feedContainer)
-//             new SearchHandler(postsUI)
-//             new FilterHandler(postsUI)
-//             const posts = await fetchPosts()
-//             if (posts) {
-//                 postsUI.render(posts)
-//             }
-//         } catch (error) {
-//             console.error('Failed to initialize feed:', error)
-//             feedContainer.innerHTML = `
-//                 <div class="text-red-600 text-center py-4">
-//                     Failed to load posts. Please try again later.
-//                 </div>
-//             `
-//         }
-//     }
-
-//     // Single post page initialization
-//     const singlePostContainer = document.getElementById('post-container')
-//     if (singlePostContainer) {
-//         console.log('Initializing single post view')
-//         new SinglePostUI(singlePostContainer)
-//     }
-
-//     // Profile user posts initialization
-//     const userPostsContainer = document.querySelector('.posts-section > div')
-//     if (userPostsContainer && !singlePostContainer) { // Only initialize if we're not on single post page
-//         const userPostsUI = new LoggedInUserPostsUI(userPostsContainer)
-//     }
-// }
-
-// // Single DOMContentLoaded listener
-// document.addEventListener('DOMContentLoaded', initializeApp, { once: true })
+// Add unhandled promise rejection handling
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('Unhandled promise rejection:', event.reason);
+});
