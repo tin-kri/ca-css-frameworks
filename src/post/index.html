@@ -1,0 +1,225 @@
+<!-- src/post/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Post | CSS Frameworks CA Tailwind</title>
+        <link rel="stylesheet" href="../style.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="../public/favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="../public/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="../public/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
+
+    <body class="bg-pink-300">
+        <header class="m md:text-lg md:font-bold">
+            <nav class="container mx-auto">
+                <div class="flex justify-start p-5">
+                    <div
+                        class="mx-auto hidden justify-center space-x-32 text-red-950 md:flex"
+                    >
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/profile/index.html"
+                        >
+                            Profile
+                        </a>
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/feed/index.html"
+                        >
+                            Feed
+                        </a>
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/index.html"
+                        >
+                            Sign in
+                        </a>
+                    </div>
+
+                    <div class="flex items-center md:hidden">
+                        <button class="" id="menu-button">
+                            <svg
+                                class="h-6 w-6 text-red-950 hover:text-red-800"
+                                fill="none"
+                                stroke-linecap="square"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hidden font-bold text-red-950" id="mobile-nav">
+                    <ul class="p-5 pt-0">
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/profile/index.html">Profile</a>
+                        </li>
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/feed/index.html">Feed</a>
+                        </li>
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/index.html">Sign in</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div id="landing-page"></div>
+
+            <section id="single-post" class="container mx-auto px-4 py-8">
+
+                <div class="max-w-2xl mx-auto"> <!-- Added wrapper with max-width -->
+                    <!-- Back Navigation aligned with content -->
+                    <div class="mb-6">
+                        <button 
+                            id="back-to-feed"
+                            class="inline-flex items-center text-red-900 hover:text-red-700 transition-colors font-medium group"
+                        >
+                            <svg 
+                                class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    stroke-width="2" 
+                                    d="M15 19l-7-7 7-7"
+                                />
+                            </svg>
+                            Back to Feed
+                        </button>
+                    </div>
+                <!-- Single Post Template -->
+                <template id="single-post-template">
+                    <article class="mx-auto max-w-2xl rounded-lg bg-white shadow-md">
+                        <!-- Author Info -->
+                        <div class="flex items-center space-x-4 border-b border-pink-100 p-4">
+                            <div class="h-10 w-10 overflow-hidden rounded-full bg-pink-50">
+                                <img
+                                    src="/placeholder.svg?height=40&width=40"
+                                    alt="Author avatar"
+                                    class="h-full w-full object-cover author-avatar"
+                                />
+                            </div>
+                            <div>
+                                <h2 class="font-semibold text-red-900 author-name"></h2>
+                                <p class="text-sm text-gray-500 post-date"></p>
+                            </div>
+                        </div>
+
+                        <!-- Post Content -->
+                        <div class="space-y-4 p-6">
+                            <h1 class="text-2xl font-bold text-red-900 post-title"></h1>
+                            <div class="space-y-2 text-red-900 post-body"></div>
+                            
+                            <!-- Reaction Section -->
+                            <div class="flex items-center space-x-4 pt-4">
+                                <button 
+                                    class="like-button group flex items-center space-x-2 rounded-full bg-pink-50 px-4 py-2 transition-colors hover:bg-pink-100"
+                                >
+                                    <svg 
+                                        class="h-5 w-5 text-gray-400 transition-colors group-hover:text-red-500" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" 
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                        />
+                                    </svg>
+                                    <span class="text-sm font-medium text-red-900 likes-count">0 likes</span>
+                                </button>
+                                
+                                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                    <svg 
+                                        class="h-5 w-5" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path 
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" 
+                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                                        />
+                                    </svg>
+                                    <span class="comments-count">0 comments</span>
+                                </div>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 border-t border-pink-100 pt-4 tags-container">
+                                <!-- Tags will be inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <div class="border-t border-pink-100 bg-pink-50/50">
+                            <!-- Comment Form -->
+                            <form id="comment-form" class="p-4">
+                                <label for="comment" class="block pb-2 text-sm font-medium text-red-900">
+                                    Add a comment
+                                </label>
+                                <textarea
+                                    id="comment"
+                                    rows="3"
+                                    class="w-full rounded-md border-pink-200 bg-white p-2 text-sm focus:border-red-900 focus:ring-red-900"
+                                    placeholder="Write your thoughts..."
+                                    required
+                                ></textarea>
+                                <button
+                                    type="submit"
+                                    class="mt-2 rounded-md bg-red-900 px-4 py-2 text-sm font-medium text-white hover:bg-red-800"
+                                >
+                                    Post Comment
+                                </button>
+                            </form>
+
+                            <!-- Comments List -->
+                            <div class="space-y-4 p-4">
+                                <h3 class="font-semibold text-red-900">Comments</h3>
+                                <div id="comments-container" class="space-y-4">
+                                    <!-- Comments will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+
+                <!-- Post content will be rendered here -->
+                <div id="post-container"></div>
+            </section>
+        </main>
+
+        <script type="module" src="../js/main.js"></script>
+    </body>
+</html>

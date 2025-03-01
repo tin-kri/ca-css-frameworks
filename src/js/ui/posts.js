@@ -46,7 +46,7 @@ export class PostsUI {
 
 
   // Post Display
-createPostElement({ title, body, tags = [] }) {
+createPostElement({ id, title, body, tags = [] }) {
     const template = document.getElementById('post-template')
     const postClone = template.content.cloneNode(true)
     const postContainer = postClone.querySelector('.post-container')
@@ -75,7 +75,10 @@ createPostElement({ title, body, tags = [] }) {
         // If no tags, remove the tags container to avoid empty space
         tagsContainer.remove()
     }
-
+// Add click handler to view full post
+postContainer.addEventListener('click', () => {
+    window.location.href = `/post/index.html?id=${id}`
+})
     return postContainer
 }
 
@@ -101,4 +104,7 @@ createPostElement({ title, body, tags = [] }) {
         const postElement = this.createPostElement(post)
         this.container.insertBefore(postElement, this.container.firstChild)
     }
+
+
+
 }
