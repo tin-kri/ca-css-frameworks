@@ -23,12 +23,13 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-    root: 'src', // Set root to src directory
-    base: '/', // Set base URL
+    root: 'src', // Keep root as src directory
+    base: '/', 
     publicDir: '../public',
     build: {
-        outDir: '../dist',
-        emptyOutDir: true,
+        outDir: '../dist', // Change this to output to root dist
+        assetsDir: 'assets',
+        emptyOutDir: true, // Keep this, it's good for clean builds
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'src/index.html'),
@@ -37,17 +38,17 @@ export default defineConfig({
                 post: resolve(__dirname, 'src/post/index.html')
             }
         }
+
     },
     server: {
         open: true,
-        // Add middleware to handle MIME types
         middlewares: [
             (req, res, next) => {
                 if (req.url.endsWith('.js')) {
-                    res.setHeader('Content-Type', 'application/javascript');
+                    res.setHeader('Content-Type', 'application/javascript')
                 }
-                next();
-            }
-        ]
-    }
+                next()
+            },
+        ],
+    },
 })
