@@ -7,8 +7,11 @@ import { SearchHandler } from './handlers/posts/searchHandler.js'
 import { FilterHandler } from './handlers/posts/filterHandler.js'
 import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 import { SinglePostUI } from './ui/singlePosts.js'
+import { hideNav } from './ui/hideNav.js'
 
 mobileNavigation()
+
+hideNav()
 
 document.querySelector('#landing-page').innerHTML = `
   <div>
