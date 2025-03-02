@@ -8,10 +8,13 @@ import { FilterHandler } from './handlers/posts/filterHandler.js'
 import { LoggedInUserPostsUI } from './ui/usersPostsFeed.js'
 import { SinglePostUI } from './ui/singlePosts.js'
 import { hideNav } from './ui/hideNav.js'
+import { initializeFooter } from './ui/footer.js'
 
 mobileNavigation()
 
 hideNav()
+
+initializeFooter();
 
 document.querySelector('#landing-page').innerHTML = `
   <div>
