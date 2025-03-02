@@ -23,10 +23,11 @@ https://ca-css-frameworks.netlify.app/
 In this project I found good help in this article about creating a multipage web application.
 [Multipage Vite Vanilla JavaScript by Mochamad Boval](https://dev.to/mochamadboval/multipage-vite-vanilla-javascript-3i0l)
 
-## Contributing
+## Trelloboard
 
-Project not open for contributions.
+https://trello.com/b/1HGJp7N5/java-script-2-ca-social-media-app-development
 
 ## Feedback
 
 If you have any feedback, please reach out to me at tinkri54173@stud.noroff.no
+
