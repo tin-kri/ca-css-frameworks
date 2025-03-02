@@ -27,7 +27,7 @@
 
     <body class="bg-pink-300">
         <header class="m md:text-lg md:font-bold">
-            <!-- <nav class="container mx-auto">
+            <nav class="container mx-auto">
                 <div class="flex justify-start p-5">
                     <div
                         class="mx-auto hidden justify-center space-x-32 text-red-950 md:flex"
@@ -79,10 +79,10 @@
                         </li>
                     </ul>
                 </div>
-            </nav> -->
+            </nav>
         </header>
-        <main class="min-h-screen bg-pink-300">
-            <div id="landing-page" class="bg-pink-300"></div>
+        <main class="min-h-screen bg-gray-50">
+            <div id="landing-page"></div>
             <div class="container mx-auto">
                 <div
                     class="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8"
@@ -91,18 +91,24 @@
                         class="grid w-full max-w-5xl grid-cols-1 gap-8 lg:grid-cols-2"
                     >
                         <!-- Login Form -->
-                        <section id="login-section" class="w-full">
+                        <section id="login-form" class="w-full">
                             <div class="rounded-lg bg-white p-8 shadow-md">
                                 <div class="mb-6">
-                                    <h1 class="mb-2 text-2xl font-bold text-red-900">
+                                    <h1
+                                        class="mb-2 text-2xl font-bold text-red-900"
+                                    >
                                         Welcome back
                                     </h1>
-                                    <h3 class="text-xl font-medium text-red-900">
+                                    <h3
+                                        class="text-xl font-medium text-red-900"
+                                    >
                                         Sign in to your account
                                     </h3>
                                 </div>
-                                <!-- Keep the form ID -->
-                                <form id="login-form" class="space-y-4">
+                                <form
+                                    class="space-y-4"
+                                    action="/profile/index.html"
+                                >
                                     <div>
                                         <label
                                             for="login-email"
@@ -210,7 +216,7 @@
                                                 <input
                                                     id="name"
                                                     name="name"
-                                                    value=""
+                                                    value="qweploqwel"
                                                     type="text"
                                                     required
                                                     class="block w-full border-b-2 border-gray-300 py-1.5 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-pink-300 focus:outline-none sm:text-sm"
@@ -230,7 +236,7 @@
                                             <input
                                                 id="register-email"
                                                 name="email"
-                                                value=""
+                                                value="qweploqwel@stud.noroff.no"
                                                 type="email"
                                                 autocomplete="email"
                                                 required
@@ -250,7 +256,7 @@
                                             <input
                                                 id="register-password"
                                                 name="password"
-                                                value=""
+                                                value="Testing00000"
                                                 type="password"
                                                 minlength="8"
                                                 required
@@ -274,6 +280,6 @@
                 </div>
             </div>
         </main>
-      <script type="module" src="/js/main.js"></script>
+        <script type="module" src="./js/main.js"></script>
     </body>
 </html>
