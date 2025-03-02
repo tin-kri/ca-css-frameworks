@@ -1,296 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Article | Multipage Vite Vanilla JavaScript</title>
-    <link rel="stylesheet" href="../style.css"/>
-  </head>
-  
-  <body class="bg-pink-300">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Feed | CSS Frameworks CA Tailwind</title>
+        <link rel="stylesheet" href="../style.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="../public/favicon_io/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="../public/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="../public/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
 
-  
-   <!-- HEADER -->
-<header class="m md:text-lg md:font-bold">
-  <nav class="container mx-auto">
-    <div class="flex justify-start p-5">
-      <div
-        class="hidden text-red-950 md:flex justify-center space-x-32 mx-auto">
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-          href="/profile/index.html"> Profile</a>
+    <body class="bg-pink-200 ">
+        <!-- HEADER -->
+        <header class="m md:text-lg md:font-bold">
+            <div id="landing-page">
+                <h1 class=" bg-red-900 text-pink-200 text-center p-10 text-6xl font-bold tracking-wider">Mizioù</h1>
+             </div>
+            <nav class="container mx-auto  ">
+                <div class="flex justify-start p-5 ">
+                    <div
+                        class="mx-auto hidden justify-center space-x-32 text-red-900 text-xl md:flex"
+                    >
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/profile/index.html"
+                        >
+                            Profile
+                        </a>
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/feed/index.html"
+                        >
+                            Feed
+                        </a>
+                        <a
+                            class="hover:underline hover:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8 active:underline active:underline-offset-8"
+                            href="/index.html"
+                        >
+                            Sign out
+                        </a>
+                    </div>
 
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-          href="/feed/index.html"> Feed</a>
+                    <div class="flex items-center md:hidden">
+                        <button class="" id="menu-button">
+                            <svg
+                                class="h-6 w-6 text-red-950 hover:text-red-800"
+                                fill="none"
+                                stroke-linecap="square"
+                                stroke-linejoin="round"
+                                stroke-width="2.5"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hidden font-bold text-red-950" id="mobile-nav">
+                    <ul class="p-5 pt-0">
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/profile/index.html">Profile</a>
+                        </li>
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/feed/index.html">Feed</a>
+                        </li>
+                        <li class="mb-5 hover:text-red-800 focus:text-red-900">
+                            <a href="/index.html">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
         
-        <a class="hover:underline hover:underline-offset-8 active:underline active:underline-offset-8 focus:text-red-900 focus:underline focus:underline-offset-8"
-          href="/index.html">Sign in </a>
-      </div>
 
-      <div class="flex md:hidden items-center">
-        <button class="" id="menu-button">
-          <svg
-            class="w-6 h-6 text-red-950 hover:text-red-800"
-            fill="none"
-            stroke-linecap="square"
-            stroke-linejoin="square"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="hidden text-red-950 font-bold" id="mobile-nav">
-      <ul class="p-5 pt-0">
-        <li class="mb-5 hover:text-red-800 focus:text-red-900">
-          <a href="/profile/index.html">Profile</a>
-        </li>
-        <li class="mb-5 hover:text-red-800 focus:text-red-900">
-          <a href="/feed/index.html">Feed</a>
-        </li>
-        <li class="mb-5 hover:text-red-800 focus:text-red-900">
-          <a href="/index.html">Sign in</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-    
-  <main>
-    <div id="landing-page"></div>
-
-<section id="create-post">
-    <div class="container mx-auto">
-      <h1 class="text-xl font-bold text-red-900 m-8 lg:text-center sm:text-left">
-        Create a Post
-      </h1>
-      <div class="m-8 shadow-sm bg-white rounded-md p-10 max-w-3xl lg:mx-auto ">
-        <form class="space-y-6">
+        <main class="bg-pink-100 p-2">
+           
           
-          <div>
-            <label for="title" class="block text-sm font-medium text-gray-900">Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              required
-              class="w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300  sm:text-sm p-3"
-              placeholder="Enter your post title"
-            />
-          </div>
-    
-         
-          <div>
-            <label for="text" class="block text-sm font-medium text-gray-900">Text</label>
-            <textarea
-              id="text"
-              name="text"
-              rows="5"
-              required
-              class="w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm p-3"
-              placeholder="Write something interesting..."
-            ></textarea>
-          </div>
-    
-          <!-- ///Makes it possible to upload image/// -->
-          <!-- <div>
-            <label for="image" class="block text-sm font-medium text-gray-900">Upload an Image (Optional)</label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              class="mt-2 block w-full text-gray-900 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-pink-300 file:text-red-900 hover:file:bg-pink-400 focus:ring-red-700 focus:border-red-700 sm:text-sm"
-            />
-          </div> -->
-    
           
-          <div>
-            <button
-              type="submit"
-              class="w-full px-4 py-3 text-white bg-red-900 rounded-md shadow-sm hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2 sm:text-sm"
-            >
-              Post
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-    
-    
-    <div class="py-11">
-      <div class="w-2/3 h-0.5 bg-red-900 m-auto rounded-lg" ></div>
-    </div>
+            <section id="create-post-section">
+                <div class="container mx-auto mb">
+                    <h1
+                        class="m-8 text-xl font-bold text-red-900 sm:text-left lg:text-center"
+                    >
+                        Create a Post
+                    </h1>
+                    <div
+                        class="m-8 max-w-3xl rounded-md bg-white p-10 shadow-sm lg:mx-auto"
+                    
+                        >
+                        <form id="create-post-form" class="space-y-6">
+                            <div>
+                                <label
+                                    for="title"
+                                    class="block text-sm font-medium text-gray-900"
+                                    >Title</label
+                                >
+                                <input
+                                    type="text"
+                                    id="post-title"
+                                    name="title"
+                                    required
+                                    class="w-full rounded-md border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm"
+                                    placeholder="Enter your post title"
+                                />
+                            </div>
 
-<section id="feed">
-    <div class="container mx-auto">
-     
-      <h1 class="text-xl font-bold text-red-900 m-8 text-center">
-        Explore
-      </h1>
-      
-      <div class="container mx-auto">
-       
-        <div class="m-8 shadow-sm bg-white rounded-md p-10 w-full max-w-[90%] sm:max-w-[calc(100%-4rem)] lg:max-w-3xl mx-auto">
-          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0">
-         
-            <div class="w-full">
-              <label for="search" class="sr-only">Search posts</label>
-              <input
-                type="text"
-                id="search"
-                placeholder="Search posts"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300  sm:text-sm p-3"
-              />
+                            <div>
+                                <label for="post-tag" class="block text-sm font-medium text-gray-900">
+                                    Category
+                                </label>
+                                <select
+                                    id="post-tag"
+                                    name="tag"
+                                    required
+                                    class="w-full rounded-md border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm"
+                                >
+                                    <option value="" disabled selected>Select a category</option>
+                                    <option value="Poetry">Poetry</option>
+                                    <option value="Book-Reviews">Book Reviews</option> 
+                                    <option value="Book">Books</option>
+                                    <option value="Fan-Fiction">Fan Fiction</option>
+                                    <option value="Creative-Writing">Creative Writing</option>
+                                    <option value="Quote">Quotes</option>
+                                    <option value="cat">Cats of Course</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="post-text"
+                                    class="block text-sm font-medium text-gray-900"
+                                    >Text</label
+                                >
+                                <textarea
+                                    id="text"
+                                    name="text"
+                                    rows="5"
+                                    required
+                                    class="w-full rounded-md border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-1 focus:ring-pink-300 sm:text-sm"
+                                    placeholder="Write something interesting..."
+                                ></textarea>
+                            </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    class="w-full rounded-md bg-red-900 px-4 py-3 text-white shadow-sm hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2 sm:text-sm"
+                                >
+                                    Post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <div class="py-11">
+                <div class="m-auto h-0.5 w-2/3 rounded-lg bg-red-900"></div>
             </div>
-      
-        
-            <div class="flex items-center space-x-4">
-              <label for="sort" class="text-sm font-medium  text-gray-700">Sort by:</label>
-              <select
-                id="sort"
-                class="rounded-md border-gray-300 bg-pink-100 shadow-sm focus:outline-none focus:ring-red-700 focus:border-red-700 sm:text-sm p-2"
-              >
-                <option value="recent">Most Recent</option>
-                <option value="popular">Most Popular</option>
-                <option value="alphabetical">Alphabetical</option>
-                <option value="author">By Author</option>
-              </select>
+
+
+        <!-- Search and Filters -->
+        <h2
+        class="mb-8 text-center text-2xl font-bold text-red-900"
+    >
+        Explore Posts
+    </h2>
+        <div id="search-filter-section" class="mb-8">
+<div class="m-8 rounded-xl bg-white p-6 shadow-lg ring-1 ring-black/5 backdrop-blur-lg">
+    <div class="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:space-y-0">
+        <!-- Search -->
+        <div class="relative flex-1 lg:mr-4">
+            <div class="relative flex w-full">
+                <svg
+                    class="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                    />
+                </svg>
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="Search posts"
+                    class="w-full rounded-l-lg border-gray-200 border-r-0 bg-gray-50 py-2 pl-10 pr-4 text-sm focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+                />
+                <button
+                    id="search-button"
+                    class="inline-flex items-center rounded-r-lg bg-red-900 px-4 py-2 text-sm font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+                >
+                    Search
+                </button>
             </div>
-          </div>
         </div>
-      
-    <div
-  class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-  id="card-container">
 
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Autumn's Whisper
+        <!-- Filter Options -->
+        <div class="flex flex-wrap items-center gap-4">
+            <select
+                id="category"
+                class="rounded-lg border-gray-200 bg-pink-50 px-4 py-2 text-sm text-red-900 hover:bg-pink-100 focus:border-red-900 focus:outline-none focus:ring-2 focus:ring-red-900/20"
+            >
+                <option value="">All Categories</option>
+                <option value="Poetry">Poetry</option>
+                <option value="Book-Reviews">Book Reviews</option> 
+                <option value="Book">Books</option>
+                <option value="Fan-Fiction">Fan Fiction</option>
+                <option value="Create-Writing">Creative Writing</option>
+                <option value="Quote">Quotes</option>
+                <option value="cat">Cats of Course</option>
+            </select>
+        </div>
     </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Leaves fall, crisp and dry,
-      Whispers of autumn linger,
-      Chill bites through the air.
-      
-      Golden hues descend,
-      Nature sheds her summer coat,
-      Quiet dreams unfold.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Secrets of the Sea
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Waves crash on the shore,
-      Secrets hidden in the foam,
-      Tides reveal their tales.
-
-      Under the pale moon,
-      Stars reflect on restless seas,
-      Time drifts in currents.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Winter's Embrace
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Winter's icy breath,
-      Laden clouds of silver weight,
-      Blankets earth in white.
-
-      Branches etched in frost,
-      Silent forests hold their peace,
-      Waiting for the thaw.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Blossoms of Spring
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Cherry blossoms bloom,
-      Petals drift in pink cascades,
-      Spring's delicate art.
-
-      Bees hum through the air,
-      Gathering life's sweet nectar,
-      Seasons in motion.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Guardians of Stone
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Mountains stand steadfast,
-      Guardians of time and stone,
-      Ancient and unbowed.
-
-      Eagles carve the sky,
-      Circling peaks of frozen might,
-      Freedom in their gaze.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      The Last Bottle
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      “This is the last one,” she whispered, tossing it into the recycling bin. The buzzer rang, signaling the end of the competition. Weeks later, her class won a trip to the recycling plant. Watching the machinery turn discarded items into something new, Mia felt a spark of pride. It wasn't just trash; it was transformation.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Great Bike Adventure
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      The birthday gift was a shiny blue bike with a basket and a bell. His parents had one rule: stick to the path in the park. But curiosity got the better of him. Veering off the trail, Leo found himself on a winding dirt path through the woods.
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Kite
-    </div>
-    <div class="overflow-hidden lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Lila and her friends raced across the field, the tail of her red kite fluttering in the wind. “Higher, higher!” they shouted. But a strong gust sent the kite soaring out of reach.
-      “Let's find it!” Lila insisted. The group followed the kite's path through a nearby forest. They searched under bushes and in trees until they spotted it, tangled in a high branch. Together, they formed a human ladder, climbing on each other's shoulders to retrieve it. When they finally freed the kite, Lila beamed. “Teamwork makes the impossible possible!”
-    </div>
-  </div>
-
-  <div class="m-8 shadow-sm bg-white rounded-md p-10">
-    <div class="sm:text-lg lg:text-xl font-semibold text-red-900">
-      Ashes and Embers
-    </div>
-    <div class="lg:mt-3 sm:text-sm lg:text-base text-red-900">
-      Flames dance in the night,
-      Stories rise on smoky winds,
-      Stars hold silent watch.
-
-      Warmth and risk collide,
-      Flickering truths in the dark,
-      Fire's fragile power.
-    </div>
-  </div>
 </div>
-</section>
+        </div>
+<!-- Feed -->
 
-<script type="module" src="../main.js"></script>  
-</main>
-  </body>
+<section id="feed" class="pb-16">
+    <div class="container mx-auto px-4">
+        <div id="card-container" class="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-8">
+            <!-- Posts will be rendered here directly -->
+        </div>
+    </div>
+      
 
+                        <div class="container mx-auto px-4">
+                            <div id="card-container" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-8">
+                                <!-- Posts will be rendered here directly -->
+                            </div>
+                        </div>
+                        
+                        <template id="post-template">
+                            <!-- Changed margins and padding to match profile template -->
+                            <div class="ml-8 mr-8 rounded-md bg-white shadow-sm post-container relative flex flex-col h-full">
+                                <!-- Post content area -->
+                                <div class="flex-1 p-4 sm:p-6 md:p-8">
+                                    <!-- Top row with heart button -->
+                                    <div class="flex justify-end items-start mb-4">
+                                        <button 
+                                            type="button" 
+                                            class="admire-btn p-1.5 text-gray-400 hover:text-red-600 transition-colors"
+                                            aria-label="Admire post"
+                                        >
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path 
+                                                    stroke-linecap="round" 
+                                                    stroke-linejoin="round" 
+                                                    stroke-width="2" 
+                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                        
+                                    <!-- Post title and body -->
+                                    <div class="pb-2 font-semibold text-red-900 text-base sm:text-lg md:text-xl post-title"></div>
+                                    <div class="text-red-900 text-sm sm:text-base post-body"></div>
+                                </div>
+                        
+                                <!-- Tags section -->
+                                <div class="px-4 sm:px-6 md:px-8 mb-3 tags-container">
+                                    <!-- Tags will be inserted here -->
+                                </div>
+                        
+                                <!-- Comment button section -->
+                                <div class="mt-auto">
+                                    <button 
+                                        type="button" 
+                                        class="w-full flex items-center justify-center gap-1 text-gray-500 hover:text-red-600 transition-colors bg-pink-50 border-t border-pink-100 p-3 rounded-b-md text-sm"
+                                    >
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        </svg>
+                                        <span>Comment</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+                        </div>
+                      
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer
+        class="mt-20 bg-gradient-to-b bg-red-900 text-white"
+    >
+        <div class="container mx-auto px-6 py-12">
+            <div class="flex items-start justify-between gap-12">
+                <div class="max-w-md space-y-6">
+                    <a href="/" class="inline-block">
+                        <h2
+                            class="text-3xl font-bold text-white"
+                        >
+                            Mizioù
+                        </h2>
+                    </a>
+                    <p class="text-lg leading-relaxed text-pink-100">
+                        Connecting creative minds through meaningful
+                        interactions. Join our community where ideas
+                        flourish and connections thrive.
+                    </p>
+                </div>
+
+                <!-- Contact & Newsletter  -->
+                <div class="w-96 space-y-6">
+                    <h3 class="text-2xl font-bold text-white">
+                        Stay Connected
+                    </h3>
+                    <p class="text-lg text-pink-100">
+                        Join our newsletter for updates and community news.
+                    </p>
+                    
+                    <form class="space-y-4">
+                        <div class="flex flex-col sm:flex-row">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                class="w-full rounded-lg sm:rounded-r-none px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-900"
+                            />
+                            <button
+                                type="submit"
+                                class="mt-2 sm:mt-0 w-full sm:w-auto rounded-lg sm:rounded-l-none bg-red-700 px-6 py-3 text-white transition-colors hover:bg-red-600"
+                            >
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-lg text-pink-100">
+                        <p>
+                            Need help?
+                            <a
+                                href=""
+                                class="underline hover:text-white"
+                                >Contact Support</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mt-8 border-t border-pink-200/20 pt-8">
+                <div
+                    class="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0"
+                >
+                    <div class="text-lg text-pink-100">
+                        <span>©</span>
+                         <span id="copyrightYear"></span> Mizioù. All rights reserved.
+                    </div>
+                    <div
+                        class="flex flex-wrap justify-center gap-6 text-lg md:justify-end"
+                    >
+                        <a
+                            href=""
+                            class="text-pink-100 transition-colors hover:text-white"
+                            >Privacy Policy</a
+                        >
+                        <a
+                            href=""
+                            class="text-pink-100 transition-colors hover:text-white"
+                            >Terms of Service</a
+                        >
+                        <button
+                            id="scrollTopBtn"
+                            class="flex items-center text-pink-100 transition-colors hover:text-white"
+                        >
+                            Back to Top
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="ml-2 h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 15l7-7 7 7"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <script type="module" src="../js/main.js"></script>
+    </body>
 </html>

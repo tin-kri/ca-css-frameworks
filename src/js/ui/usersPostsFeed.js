@@ -1,0 +1,160 @@
+import { fetchUserPosts } from '../api/posts/fetchUserPosts.js'
+import { deletePost } from '../api/posts/deletePost.js'
+import { showNotification } from '../utils/notifications.js'
+import { handlePostUpdate } from '../handlers/posts/updateHandler.js'
+import { createEditForm } from './postEditForm.js'
+
+
+export class LoggedInUserPostsUI {
+    constructor(containerElement) {
+        this.container = containerElement
+        this.loadUserPosts()
+    }
+
+
+    async handleEdit(id, currentData) {
+        const postElement = this.container.querySelector(`[data-post-id="${id}"]`)
+        if (!postElement) return
+
+        const contentDiv = postElement.querySelector('.flex-1')
+        if (!contentDiv) return
+
+        const originalContent = contentDiv.innerHTML
+
+        const handleSubmit = async (e) => {
+            e.preventDefault()
+            const formData = new FormData(e.target)
+            const updateData = {
+                title: formData.get('title'),
+                body: formData.get('body')
+            }
+
+            try {
+                const updatedPost = await handlePostUpdate(id, updateData)
+                if (updatedPost) {
+                    await this.loadUserPosts()
+                }
+            } catch (error) {
+                console.error('UI handler error:', error)
+                contentDiv.innerHTML = originalContent
+            }
+        }
+
+        const handleCancel = () => {
+            contentDiv.innerHTML = originalContent
+        }
+
+        const form = createEditForm(currentData, handleSubmit, handleCancel)
+        contentDiv.innerHTML = ''
+        contentDiv.appendChild(form)
+    }
+
+
+    async handleDelete(postId) {
+        const postElement = this.container.querySelector(`[data-post-id="${postId}"]`)
+        if (!postElement) return
+
+        if (!confirm('Are you sure you want to delete this post?')) {
+            return
+        }
+
+        try {
+            await deletePost(postId)
+            postElement.remove()
+            showNotification('Post deleted successfully', 'success')
+        } catch (error) {
+            console.error('Failed to delete post:', error)
+            showNotification('Failed to delete post. Please try again.', 'error')
+        }
+    }
+
+
+    async loadUserPosts() {
+        try {
+            const posts = await fetchUserPosts()
+            if (posts) {
+                this.render(posts)
+            }
+        } catch (error) {
+            console.error('Failed to load user posts:', error)
+        }
+    }
+
+    // Add the sanitizeText method
+    sanitizeText(text) {
+        if (!text) return ''
+        const div = document.createElement('div')
+        div.textContent = text
+        return div.innerHTML
+    }
+
+    createPostElement({ id, title, body }) {
+        const template = document.querySelector('#logged-in-user-post-template')
+        const postClone = template.content.cloneNode(true)
+        const postContainer = postClone.querySelector('.logged-in-user-post-container')
+        
+        // Set post ID as data attribute
+        postContainer.dataset.postId = id
+    
+        const titleDiv = postClone.querySelector('.logged-in-user-post-title')
+        const bodyDiv = postClone.querySelector('.logged-in-user-post-body')
+    
+        titleDiv.textContent = this.sanitizeText(title)
+        bodyDiv.textContent = this.sanitizeText(body)
+    
+        // Set up options menu
+        const optionsBtn = postContainer.querySelector('.options-btn')
+        const optionsMenu = postContainer.querySelector('.options-menu')
+        const editBtn = postContainer.querySelector('.edit-post-btn')
+        const deleteBtn = postContainer.querySelector('.delete-post-btn')
+    
+        // Toggle menu
+        optionsBtn?.addEventListener('click', (e) => {
+            e.stopPropagation()
+            optionsMenu.classList.toggle('hidden')
+        })
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', () => {
+            optionsMenu.classList.add('hidden')
+        })
+    
+        // Event listeners for edit and delete
+        editBtn?.addEventListener('click', () => {
+            optionsMenu.classList.add('hidden')
+            this.handleEdit(id, { title, body })
+        })
+    
+        deleteBtn?.addEventListener('click', (e) => {
+            e.stopPropagation()
+            // e.preventDefault()
+            optionsMenu.classList.add('hidden')
+            this.handleDelete(id)
+        })
+    
+        return postContainer
+    }
+
+    render(posts) {
+        this.container.innerHTML = ''
+        
+        if (!posts || posts.length === 0) {
+            this.container.innerHTML = `
+                <div class="text-center p-4 text-red-900">
+                    You haven't created any posts yet.
+                </div>
+            `
+            return
+        }
+
+        const fragment = document.createDocumentFragment()
+        posts.forEach((post) => {
+            const postElement = this.createPostElement(post)
+            if (postElement) {
+                fragment.appendChild(postElement)
+            }
+        })
+
+        this.container.appendChild(fragment)
+    }
+}
